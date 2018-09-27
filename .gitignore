@@ -30,4 +30,3 @@ lib/*
 # data folder
 data/*
 !.gitkeep
-!*.dat
