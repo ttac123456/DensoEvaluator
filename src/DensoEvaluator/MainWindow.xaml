@@ -1,0 +1,265 @@
+﻿<Window x:Class="NovaEvaluator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NovaEvaluator"
+        mc:Ignorable="d"
+        Title="Denso評価画面" Height="450" Width="800" MinHeight="450" MinWidth="650" Loaded="Window_Loaded">
+    <Grid x:Name="groupBox_Main">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <GroupBox x:Name="groupBox_Operation" Header="操作" Grid.Row="0" Grid.Column="0" >
+            <Grid x:Name="grid_Operation">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="button_MoveFront" Grid.Row="2" Grid.Column="1" Background="Transparent" BorderBrush="Transparent">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Image Name="image" Source="{StaticResource ImageDeactivatedArrowFront}" />
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="image" Property="Source" Value="{StaticResource ImageActivatedArrowFront}" />
+                                            </Trigger>
+                                            <Trigger Property="IsPressed" Value="true">
+                                                <Setter TargetName="image" Property="Source" Value="{StaticResource ImagePressedArrowFront}" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="button_MoveRear"  Grid.Row="0" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" Click="button_MoveRear_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Image Name="image" Source="{StaticResource ImageDeactivatedArrowRear}" />
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="image" Property="Source" Value="{StaticResource ImageActivatedArrowRear}" />
+                                            </Trigger>
+                                            <Trigger Property="IsPressed" Value="true">
+                                                <Setter TargetName="image" Property="Source" Value="{StaticResource ImagePressedArrowRear}" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="button_MoveLeft"  Grid.Row="1" Grid.Column="0" Background="Transparent" BorderBrush="Transparent">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Image Name="image" Source="{StaticResource ImageDeactivatedArrowLeft}" />
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="image" Property="Source" Value="{StaticResource ImageActivatedArrowLeft}" />
+                                            </Trigger>
+                                            <Trigger Property="IsPressed" Value="true">
+                                                <Setter TargetName="image" Property="Source" Value="{StaticResource ImagePressedArrowLeft}" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="button_MoveRight" Grid.Row="1" Grid.Column="2" Background="Transparent" BorderBrush="Transparent">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Image Name="image" Source="{StaticResource ImageDeactivatedArrowRight}" />
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="image" Property="Source" Value="{StaticResource ImageActivatedArrowRight}" />
+                                            </Trigger>
+                                            <Trigger Property="IsPressed" Value="true">
+                                                <Setter TargetName="image" Property="Source" Value="{StaticResource ImagePressedArrowRight}" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="button_MoveUp"    Grid.Row="0" Grid.Column="3" Background="Transparent" BorderBrush="Transparent">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Image Name="image" Source="{StaticResource ImageDeactivatedArrowUp}" />
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="image" Property="Source" Value="{StaticResource ImageActivatedArrowUp}" />
+                                            </Trigger>
+                                            <Trigger Property="IsPressed" Value="true">
+                                                <Setter TargetName="image" Property="Source" Value="{StaticResource ImagePressedArrowUp}" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="button_MoveDown"  Grid.Row="2" Grid.Column="3" Background="Transparent" BorderBrush="Transparent">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Image Name="image" Source="{StaticResource ImageDeactivatedArrowDown}" />
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="image" Property="Source" Value="{StaticResource ImageActivatedArrowDown}" />
+                                            </Trigger>
+                                            <Trigger Property="IsPressed" Value="true">
+                                                <Setter TargetName="image" Property="Source" Value="{StaticResource ImagePressedArrowDown}" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center">
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" >
+                        <Label   x:Name="label_FB" Content="X:" HorizontalAlignment="Right" />
+                        <TextBox x:Name="textBox_FB" Text="123456789" TextWrapping="Wrap" Width="72" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" >
+                        <Label   x:Name="label_LR" Content="Y:" HorizontalAlignment="Right"/>
+                        <TextBox x:Name="textBox_LR" Text="123456789" TextWrapping="Wrap" Width="72" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="2" >
+                        <Label   x:Name="label_UD" Content="Z:" HorizontalAlignment="Right"/>
+                        <TextBox x:Name="textBox_UD" Text="123456789" TextWrapping="Wrap" Width="72" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="groupBox_Setting" Header="速度設定" Grid.Row="0" Grid.Column="1" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label   x:Name="label_SettingSpeedLow"     Grid.Row="0" Grid.Column="1" Content="Low"  HorizontalAlignment="Center"/>
+                <Label   x:Name="label_SettingSpeedHigh"    Grid.Row="0" Grid.Column="2" Content="High" HorizontalAlignment="Center"/>
+                <Label   x:Name="label_SettingSpeedX"       Grid.Row="1" Grid.Column="0" Content="X"    HorizontalAlignment="Center"/>
+                <TextBox x:Name="textBox_SettingSpeedLowX"  Grid.Row="1" Grid.Column="1" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" HorizontalAlignment="Right"/>
+                <TextBox x:Name="textBox_SettingSpeedHighX" Grid.Row="1" Grid.Column="2" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" HorizontalAlignment="Right"/>
+                <Label   x:Name="label_SettingSpeedY"       Grid.Row="2" Grid.Column="0" Content="Y"    HorizontalAlignment="Center"/>
+                <TextBox x:Name="textBox_SettingSpeedLowY"  Grid.Row="2" Grid.Column="1" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" HorizontalAlignment="Right"/>
+                <TextBox x:Name="textBox_SettingSpeedHighY" Grid.Row="2" Grid.Column="2" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" HorizontalAlignment="Right"/>
+                <Label   x:Name="label_SettingSpeedZ"       Grid.Row="3" Grid.Column="0" Content="Z"    HorizontalAlignment="Center"/>
+                <TextBox x:Name="textBox_SettingSpeedLowZ"  Grid.Row="3" Grid.Column="1" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" HorizontalAlignment="Right"/>
+                <TextBox x:Name="textBox_SettingSpeedHighZ" Grid.Row="3" Grid.Column="2" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" HorizontalAlignment="Right"/>
+            </Grid>
+        </GroupBox>
+
+        <StackPanel  Grid.Row="1" Grid.Column="0">
+            <GroupBox x:Name="groupBox_PresetPosition" Header="移動位置">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Button x:Name="button_PersetPosition01" Content="01" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
+                        <Button x:Name="button_PersetPosition02" Content="02" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
+                        <Button x:Name="button_PersetPosition03" Content="03" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
+                        <Button x:Name="button_PersetPosition04" Content="04" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
+                        <Button x:Name="button_PersetPosition05" Content="05" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
+                        <Button x:Name="button_PersetPosition06" Content="06" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
+                        <Button x:Name="button_PersetPosition07" Content="07" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
+                        <Button x:Name="button_PersetPosition08" Content="08" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Button x:Name="button_PersetPosition09" Content="09" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
+                        <Button x:Name="button_PersetPosition10" Content="10" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
+                        <Button x:Name="button_PersetPosition11" Content="11" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
+                        <Button x:Name="button_PersetPosition12" Content="12" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
+                        <Button x:Name="button_PersetPosition13" Content="13" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
+                        <Button x:Name="button_PersetPosition14" Content="14" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
+                        <Button x:Name="button_PersetPosition15" Content="15" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
+                        <Button x:Name="button_PersetPosition16" Content="16" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
+                    </StackPanel>
+                    <GroupBox x:Name="groupBox_LoadPosition" Header="位置ロード">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="textBox_SettingCsvPath" Text="C:\DensoEvaluator\SettingCsv" TextAlignment="Left" HorizontalAlignment="Left" DockPanel.Dock ="Left"/>
+                            <Button x:Name="button_SettingCsvPath"  Content="参照" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
+                        </Grid>
+                    </GroupBox>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox x:Name="groupBox_PositionStatus2" Header="現在位置ステータス2">
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBox x:Name="textBox_OtherStatus1" Text="stat1" Width="64" Margin="2" HorizontalAlignment="Right" TextAlignment="Center"/>
+                    <TextBox x:Name="textBox_OtherStatus2" Text="stat2" Width="64" Margin="2" HorizontalAlignment="Right" TextAlignment="Center"/>
+                    <TextBox x:Name="textBox_OtherStatus3" Text="stat3" Width="64" Margin="2" HorizontalAlignment="Right" TextAlignment="Center"/>
+                    <TextBox x:Name="textBox_OtherStatus4" Text="stat4" Width="64" Margin="2" HorizontalAlignment="Right" TextAlignment="Center"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+
+        <GroupBox x:Name="groupBox_PositionStatus" Header="現在位置ステータス" Grid.Row="1" Grid.Column="1" >
+            <DataGrid x:Name="dataGrid_PositionStatus" HeadersVisibility="All" ItemsSource="{Binding}" Margin="5" HorizontalAlignment="Left" VerticalAlignment="Top" CanUserReorderColumns="False" CanUserSortColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+                <DataGrid.RowHeaderStyle>
+                    <Style TargetType="{x:Type DataGridRowHeader}">
+                        <Setter Property="Content" Value="{Binding Path=[0]}" />
+                    </Style>
+                </DataGrid.RowHeaderStyle>
+                <!-- 
+                <DataGridTextColumn x:Name="colStatus1" Header="Status1" Binding="{Binding Path=Status1}" />
+                <DataGridTextColumn x:Name="colStatus2" Header="Status2" Binding="{Binding Path=Status2}" />
+                <DataGridTextColumn x:Name="colStatus3" Header="Status3" Binding="{Binding Path=Status3}" />
+                <DataGridTextColumn x:Name="colStatus4" Header="Status4" Binding="{Binding Path=Status4}" />
+                <DataGridTextColumn x:Name="colStatus5" Header="Status5" Binding="{Binding Path=Status5}" />
+-->
+            </DataGrid>
+        </GroupBox>
+    </Grid>
+</Window>

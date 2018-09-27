@@ -1,0 +1,28 @@
+﻿<Application x:Class="NovaEvaluator.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:NovaEvaluator"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <BitmapImage x:Key="ImageDeactivatedArrowFront" UriSource="./Resources/DeactivatedArrowFront.png" />
+        <BitmapImage x:Key="ImageDeactivatedArrowRear"  UriSource="./Resources/DeactivatedArrowRear.png" />
+        <BitmapImage x:Key="ImageDeactivatedArrowLeft"  UriSource="./Resources/DeactivatedArrowLeft.png" />
+        <BitmapImage x:Key="ImageDeactivatedArrowRight" UriSource="./Resources/DeactivatedArrowRight.png" />
+        <BitmapImage x:Key="ImageDeactivatedArrowUp"    UriSource="./Resources/DeactivatedArrowUp.png" />
+        <BitmapImage x:Key="ImageDeactivatedArrowDown"  UriSource="./Resources/DeactivatedArrowDown.png" />
+
+        <BitmapImage x:Key="ImageActivatedArrowFront"   UriSource="./Resources/ActivatedArrowFront.png" />
+        <BitmapImage x:Key="ImageActivatedArrowRear"    UriSource="./Resources/ActivatedArrowRear.png" />
+        <BitmapImage x:Key="ImageActivatedArrowLeft"    UriSource="./Resources/ActivatedArrowLeft.png" />
+        <BitmapImage x:Key="ImageActivatedArrowRight"   UriSource="./Resources/ActivatedArrowRight.png" />
+        <BitmapImage x:Key="ImageActivatedArrowUp"      UriSource="./Resources/ActivatedArrowUp.png" />
+        <BitmapImage x:Key="ImageActivatedArrowDown"    UriSource="./Resources/ActivatedArrowDown.png" />
+
+        <BitmapImage x:Key="ImagePressedArrowFront"     UriSource="./Resources/PressedArrowFront.png" />
+        <BitmapImage x:Key="ImagePressedArrowRear"      UriSource="./Resources/PressedArrowRear.png" />
+        <BitmapImage x:Key="ImagePressedArrowLeft"      UriSource="./Resources/PressedArrowLeft.png" />
+        <BitmapImage x:Key="ImagePressedArrowRight"     UriSource="./Resources/PressedArrowRight.png" />
+        <BitmapImage x:Key="ImagePressedArrowUp"        UriSource="./Resources/PressedArrowUp.png" />
+        <BitmapImage x:Key="ImagePressedArrowDown"      UriSource="./Resources/PressedArrowDown.png" />
+    </Application.Resources>
+</Application>
