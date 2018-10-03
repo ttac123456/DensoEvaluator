@@ -22,7 +22,7 @@ using System.Data;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace NovaEvaluator
+namespace DensoEvaluator
 {
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
@@ -44,10 +44,10 @@ namespace NovaEvaluator
         {
             InitializeComponent();
 
-            this.dataGrid_PositionStatus.LoadingRow +=
-                 (sender, e) => {
-                     e.Row.Header = DIRECTION_NAME[e.Row.GetIndex()];
-                 };
+            //this.dataGrid_PositionStatus.LoadingRow +=
+            //     (sender, e) => {
+            //         e.Row.Header = DIRECTION_NAME[e.Row.GetIndex()];
+            //     };
         }
 
         CollectionViewSource view = new CollectionViewSource();
@@ -73,7 +73,7 @@ namespace NovaEvaluator
             }
 
             view.Source = customers;
-            this.dataGrid_PositionStatus.DataContext = view;
+            //this.dataGrid_PositionStatus.DataContext = view;
         }
 
         class Customer
@@ -122,7 +122,7 @@ namespace NovaEvaluator
             }
             i++;
 
-            this.dataGrid_PositionStatus.DataContext = dt;
+            //this.dataGrid_PositionStatus.DataContext = dt;
         }
     }
 }

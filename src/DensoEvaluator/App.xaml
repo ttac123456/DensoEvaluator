@@ -1,7 +1,7 @@
-﻿<Application x:Class="NovaEvaluator.App"
+﻿<Application x:Class="DensoEvaluator.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:NovaEvaluator"
+             xmlns:local="clr-namespace:DensoEvaluator"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <BitmapImage x:Key="ImageDeactivatedArrowFront" UriSource="./Resources/DeactivatedArrowFront.png" />
