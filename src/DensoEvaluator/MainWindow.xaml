@@ -209,24 +209,24 @@
             <GroupBox x:Name="groupBox_PresetPosition" Header="移動位置">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5">
-                        <Button x:Name="button_PersetPosition01" Content="01" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition02" Content="02" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition03" Content="03" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition04" Content="04" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition05" Content="05" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition06" Content="06" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition07" Content="07" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition08" Content="08" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition01" Content="01" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition02" Content="02" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition03" Content="03" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition04" Content="04" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition05" Content="05" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition06" Content="06" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition07" Content="07" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition08" Content="08" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5">
-                        <Button x:Name="button_PersetPosition09" Content="09" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition10" Content="10" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition11" Content="11" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition12" Content="12" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition13" Content="13" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition14" Content="14" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition15" Content="15" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition16" Content="16" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition09" Content="09" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition10" Content="10" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition11" Content="11" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition12" Content="12" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition13" Content="13" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition14" Content="14" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition15" Content="15" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition16" Content="16" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
                     </StackPanel>
                     <GroupBox x:Name="groupBox_LoadPosition" Header="位置ロード">
                         <DockPanel LastChildFill="True">
@@ -238,10 +238,10 @@
             </GroupBox>
             <GroupBox x:Name="groupBox_DeviceStatus" Header="デバイスステータス">
                 <StackPanel Orientation="Horizontal" Margin="5">
-                    <TextBox x:Name="textBox_OtherStatus1" Text="stat1" Width="64" Margin="2" HorizontalAlignment="Right" TextAlignment="Center"/>
-                    <TextBox x:Name="textBox_OtherStatus2" Text="stat2" Width="64" Margin="2" HorizontalAlignment="Right" TextAlignment="Center"/>
-                    <TextBox x:Name="textBox_OtherStatus3" Text="stat3" Width="64" Margin="2" HorizontalAlignment="Right" TextAlignment="Center"/>
-                    <TextBox x:Name="textBox_OtherStatus4" Text="stat4" Width="64" Margin="2" HorizontalAlignment="Right" TextAlignment="Center"/>
+                    <TextBox x:Name="textBox_OtherStatus1" Text="stat1" Width="64" Margin="2" HorizontalAlignment="Right" TextAlignment="Center" Background="LightGray" IsReadOnly="true"/>
+                    <TextBox x:Name="textBox_OtherStatus2" Text="stat2" Width="64" Margin="2" HorizontalAlignment="Right" TextAlignment="Center" Background="LightGray" IsReadOnly="true"/>
+                    <TextBox x:Name="textBox_OtherStatus3" Text="stat3" Width="64" Margin="2" HorizontalAlignment="Right" TextAlignment="Center" Background="LightGray" IsReadOnly="true"/>
+                    <TextBox x:Name="textBox_OtherStatus4" Text="stat4" Width="64" Margin="2" HorizontalAlignment="Right" TextAlignment="Center" Background="LightGray" IsReadOnly="true"/>
                 </StackPanel>
             </GroupBox>
         </StackPanel>
@@ -270,26 +270,26 @@
                 <Label   x:Name="label_Status5" Grid.Row="0" Grid.Column="5" Content="stat5" HorizontalAlignment="Center"/>
                 <Label   x:Name="label_Status6" Grid.Row="0" Grid.Column="6" Content="stat6" HorizontalAlignment="Center"/>
                 <Label   x:Name="label_PosX"          Grid.Row="1" Grid.Column="0" Content="X"    HorizontalAlignment="Center"/>
-                <TextBox x:Name="textBox_PosXStatus1" Grid.Row="1" Grid.Column="1" Text="" TextWrapping="Wrap" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray"/>
-                <TextBox x:Name="textBox_PosXStatus2" Grid.Row="1" Grid.Column="2" Text="" TextWrapping="Wrap" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray"/>
-                <TextBox x:Name="textBox_PosXStatus3" Grid.Row="1" Grid.Column="3" Text="" TextWrapping="Wrap" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray"/>
-                <TextBox x:Name="textBox_PosXStatus4" Grid.Row="1" Grid.Column="4" Text="" TextWrapping="Wrap" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray"/>
-                <TextBox x:Name="textBox_PosXStatus5" Grid.Row="1" Grid.Column="5" Text="" TextWrapping="Wrap" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray"/>
-                <TextBox x:Name="textBox_PosXStatus6" Grid.Row="1" Grid.Column="6" Text="" TextWrapping="Wrap" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray"/>
+                <TextBox x:Name="textBox_PosXStatus1" Grid.Row="1" Grid.Column="1" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                <TextBox x:Name="textBox_PosXStatus2" Grid.Row="1" Grid.Column="2" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                <TextBox x:Name="textBox_PosXStatus3" Grid.Row="1" Grid.Column="3" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                <TextBox x:Name="textBox_PosXStatus4" Grid.Row="1" Grid.Column="4" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                <TextBox x:Name="textBox_PosXStatus5" Grid.Row="1" Grid.Column="5" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                <TextBox x:Name="textBox_PosXStatus6" Grid.Row="1" Grid.Column="6" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
                 <Label   x:Name="label_PosY"          Grid.Row="2" Grid.Column="0" Content="Y"    HorizontalAlignment="Center"/>
-                <TextBox x:Name="textBox_PosYStatus1" Grid.Row="2" Grid.Column="1" Text="" TextWrapping="Wrap" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray"/>
-                <TextBox x:Name="textBox_PosYStatus2" Grid.Row="2" Grid.Column="2" Text="" TextWrapping="Wrap" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray"/>
-                <TextBox x:Name="textBox_PosYStatus3" Grid.Row="2" Grid.Column="3" Text="" TextWrapping="Wrap" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray"/>
-                <TextBox x:Name="textBox_PosYStatus4" Grid.Row="2" Grid.Column="4" Text="" TextWrapping="Wrap" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray"/>
-                <TextBox x:Name="textBox_PosYStatus5" Grid.Row="2" Grid.Column="5" Text="" TextWrapping="Wrap" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray"/>
-                <TextBox x:Name="textBox_PosYStatus6" Grid.Row="2" Grid.Column="6" Text="" TextWrapping="Wrap" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray"/>
+                <TextBox x:Name="textBox_PosYStatus1" Grid.Row="2" Grid.Column="1" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                <TextBox x:Name="textBox_PosYStatus2" Grid.Row="2" Grid.Column="2" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                <TextBox x:Name="textBox_PosYStatus3" Grid.Row="2" Grid.Column="3" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                <TextBox x:Name="textBox_PosYStatus4" Grid.Row="2" Grid.Column="4" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                <TextBox x:Name="textBox_PosYStatus5" Grid.Row="2" Grid.Column="5" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                <TextBox x:Name="textBox_PosYStatus6" Grid.Row="2" Grid.Column="6" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
                 <Label   x:Name="label_PosZ"          Grid.Row="3" Grid.Column="0" Content="Z"    HorizontalAlignment="Center"/>
-                <TextBox x:Name="textBox_PosZStatus1" Grid.Row="3" Grid.Column="1" Text="" TextWrapping="Wrap" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray"/>
-                <TextBox x:Name="textBox_PosZStatus2" Grid.Row="3" Grid.Column="2" Text="" TextWrapping="Wrap" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray"/>
-                <TextBox x:Name="textBox_PosZStatus3" Grid.Row="3" Grid.Column="3" Text="" TextWrapping="Wrap" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray"/>
-                <TextBox x:Name="textBox_PosZStatus4" Grid.Row="3" Grid.Column="4" Text="" TextWrapping="Wrap" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray"/>
-                <TextBox x:Name="textBox_PosZStatus5" Grid.Row="3" Grid.Column="5" Text="" TextWrapping="Wrap" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray"/>
-                <TextBox x:Name="textBox_PosZStatus6" Grid.Row="3" Grid.Column="6" Text="" TextWrapping="Wrap" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray"/>
+                <TextBox x:Name="textBox_PosZStatus1" Grid.Row="3" Grid.Column="1" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                <TextBox x:Name="textBox_PosZStatus2" Grid.Row="3" Grid.Column="2" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                <TextBox x:Name="textBox_PosZStatus3" Grid.Row="3" Grid.Column="3" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                <TextBox x:Name="textBox_PosZStatus4" Grid.Row="3" Grid.Column="4" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                <TextBox x:Name="textBox_PosZStatus5" Grid.Row="3" Grid.Column="5" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                <TextBox x:Name="textBox_PosZStatus6" Grid.Row="3" Grid.Column="6" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
             </Grid>
         </GroupBox>
     </Grid>
