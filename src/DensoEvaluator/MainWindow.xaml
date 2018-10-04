@@ -209,24 +209,24 @@
             <GroupBox x:Name="groupBox_PresetPosition" Header="移動位置">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5">
-                        <Button x:Name="button_PersetPosition01" Content="01" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
-                        <Button x:Name="button_PersetPosition02" Content="02" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
-                        <Button x:Name="button_PersetPosition03" Content="03" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
-                        <Button x:Name="button_PersetPosition04" Content="04" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
-                        <Button x:Name="button_PersetPosition05" Content="05" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
-                        <Button x:Name="button_PersetPosition06" Content="06" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
-                        <Button x:Name="button_PersetPosition07" Content="07" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
-                        <Button x:Name="button_PersetPosition08" Content="08" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
+                        <Button x:Name="button_PersetPosition01" Content="01" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition02" Content="02" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition03" Content="03" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition04" Content="04" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition05" Content="05" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition06" Content="06" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition07" Content="07" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition08" Content="08" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5">
-                        <Button x:Name="button_PersetPosition09" Content="09" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
-                        <Button x:Name="button_PersetPosition10" Content="10" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
-                        <Button x:Name="button_PersetPosition11" Content="11" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
-                        <Button x:Name="button_PersetPosition12" Content="12" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
-                        <Button x:Name="button_PersetPosition13" Content="13" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
-                        <Button x:Name="button_PersetPosition14" Content="14" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
-                        <Button x:Name="button_PersetPosition15" Content="15" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
-                        <Button x:Name="button_PersetPosition16" Content="16" Width="30" Height="30" Margin="2" HorizontalAlignment="Right"/>
+                        <Button x:Name="button_PersetPosition09" Content="09" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition10" Content="10" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition11" Content="11" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition12" Content="12" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition13" Content="13" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition14" Content="14" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition15" Content="15" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition16" Content="16" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Click="button_PersetPosition_Click"/>
                     </StackPanel>
                     <GroupBox x:Name="groupBox_LoadPosition" Header="位置ロード">
                         <DockPanel LastChildFill="True">
