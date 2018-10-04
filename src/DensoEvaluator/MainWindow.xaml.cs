@@ -32,6 +32,8 @@ namespace DensoEvaluator
         //http://oita.oika.me/2014/11/03/wpf-datagrid-binding/
         //https://social.msdn.microsoft.com/Forums/ja-JP/38e6ae57-4a3c-4ddd-8df5-c3926a473e93/datagridesc?forum=wpfja
 
+        private PersetPositionReader presetPositionReader = new PersetPositionReader();
+
         // 操作方向名称定義
         //string[] src = { "Tokyo", "Osaka", "Nagoya" };
 
@@ -74,6 +76,8 @@ namespace DensoEvaluator
 
             view.Source = customers;
             //this.dataGrid_PositionStatus.DataContext = view;
+
+            presetPositionReader.Load(textBox_SettingCsvPath.Text);
         }
 
         class Customer

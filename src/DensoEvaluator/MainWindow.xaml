@@ -230,7 +230,7 @@
                     </StackPanel>
                     <GroupBox x:Name="groupBox_LoadPosition" Header="位置ロード">
                         <DockPanel LastChildFill="True">
-                            <TextBox x:Name="textBox_SettingCsvPath" Text="MovingPositionSetting" TextAlignment="Left" DockPanel.Dock="Left"/>
+                            <TextBox x:Name="textBox_SettingCsvPath" Text="PresetPositionSetting.csv" TextAlignment="Left" DockPanel.Dock="Left"/>
                             <Button x:Name="button_SettingCsvPath"  Content="参照" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
                         </DockPanel>
                     </GroupBox>
