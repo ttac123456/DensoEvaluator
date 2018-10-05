@@ -128,5 +128,22 @@ namespace DensoEvaluator
 
             //this.dataGrid_PositionStatus.DataContext = dt;
         }
+
+        private void button_PersetPosition_Click(object sender, RoutedEventArgs e)
+        {
+            // 押されたボタンのindexを取得
+            var buttonContent = ((System.Windows.Controls.Button)sender).Content.ToString();
+            // indexをキーにプリセット位置を取得する
+            var position = presetPositionReader.GetPosition(buttonContent);
+
+            // forDebug:デバッグ出力
+            if (position.Count > 0)
+                Console.WriteLine(buttonContent + ":" +
+                    position[0].ToString() + "," +
+                    position[1].ToString() + "," +
+                    position[2].ToString());
+            else
+                Console.WriteLine(buttonContent);
+        }
     }
 }

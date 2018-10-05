@@ -52,8 +52,11 @@ namespace DensoEvaluator
             {
                 sr.Close();
             }
+        }
 
-
+        public List<double> GetPosition(string indexText)
+        {
+            return dictPresetPosition[indexText];
         }
     }
 }
