@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DensoEvaluator"
         mc:Ignorable="d"
-        Title="Denso評価画面" Height="450" Width="800" MinHeight="450" MinWidth="650" Loaded="Window_Loaded">
+        Title="Denso評価画面" Height="450" Width="650" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid x:Name="groupBox_Main">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -230,7 +230,7 @@
                     </StackPanel>
                     <GroupBox x:Name="groupBox_LoadPosition" Header="位置ロード">
                         <DockPanel LastChildFill="True">
-                            <TextBox x:Name="textBox_SettingCsvPath" Text="PresetPositionSetting.csv" TextAlignment="Left" DockPanel.Dock="Left"/>
+                            <TextBox x:Name="textBox_SettingCsvPath" Text="PresetPositionSetting.csv" TextAlignment="Left" DockPanel.Dock="Left" Width="240"/>
                             <Button x:Name="button_SettingCsvPath"  Content="参照" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
                         </DockPanel>
                     </GroupBox>
