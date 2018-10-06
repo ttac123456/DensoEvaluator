@@ -32,7 +32,6 @@ namespace DensoEvaluator
         //http://oita.oika.me/2014/11/03/wpf-datagrid-binding/
         //https://social.msdn.microsoft.com/Forums/ja-JP/38e6ae57-4a3c-4ddd-8df5-c3926a473e93/datagridesc?forum=wpfja
 
-        private AppSettings appSettings = new AppSettings();                                ///< アプリケーション設定
         private PersetPositionReader presetPositionReader = new PersetPositionReader();     ///< 移動位置リーダー
 
         /// <summary>
@@ -52,6 +51,9 @@ namespace DensoEvaluator
         /// </summary>
         private void setDefaultSettings()
         {
+            // アプリケーション設定を取得
+            AppSettings appSettings = AppSettings.GetInstance();
+
             // デフォルト通信設定
             comboBox_ComPortSetting.SelectedValue = appSettings.ComPort;
             comboBox_BaudrateSetting.SelectedValue = appSettings.Baudrate;
@@ -61,8 +63,39 @@ namespace DensoEvaluator
             comboBox_FlowControlSetting.SelectedValue = appSettings.FlowControl;
         }
 
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // アプリケーション設定インスタンスを取得
+            AppSettings appSettings = AppSettings.GetInstance();
+
+            // アプリケーション設定を読み込む
+            appSettings.Load();
+
+            // 通信設定
+            comboBox_ComPortSetting.SelectedValue = appSettings.ComPort;
+            comboBox_BaudrateSetting.SelectedValue = appSettings.Baudrate;
+            comboBox_ParitySetting.SelectedValue = appSettings.Parity;
+            comboBox_DataBitSetting.SelectedValue = appSettings.DataBit;
+            comboBox_StopBitSetting.SelectedValue = appSettings.StopBit;
+            comboBox_FlowControlSetting.SelectedValue = appSettings.FlowControl;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // アプリケーション設定インスタンスを取得
+            AppSettings appSettings = AppSettings.GetInstance();
+
+            // 通信設定
+            appSettings.ComPort = (ComPortEnum)comboBox_ComPortSetting.SelectedValue;
+            appSettings.Baudrate = (BaudrateEnum)comboBox_BaudrateSetting.SelectedValue;
+            appSettings.Parity = (ParityEnum)comboBox_ParitySetting.SelectedValue;
+            appSettings.DataBit = (DataBitEnum)comboBox_DataBitSetting.SelectedValue;
+            appSettings.StopBit = (StopBitEnum)comboBox_StopBitSetting.SelectedValue;
+            appSettings.FlowControl = (FlowControlEnum)comboBox_FlowControlSetting.SelectedValue;
+
+            // アプリケーション設定を保存する
+            appSettings.Save();
         }
 
         // マウスクリックイベント取得

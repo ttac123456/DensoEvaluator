@@ -17,15 +17,15 @@ namespace DensoEvaluator
     /// </summary>
     public enum ComPortEnum
     {
-        Com01 = 1,
-        Com02,
-        Com03,
-        Com04,
-        Com05,
-        Com06,
-        Com07,
-        Com08,
-        Com09,
+        Com1 = 1,
+        Com2,
+        Com3,
+        Com4,
+        Com5,
+        Com6,
+        Com7,
+        Com8,
+        Com9,
         Com10,
         Com11,
         Com12,
@@ -54,21 +54,21 @@ namespace DensoEvaluator
     /// </summary>
     public enum BaudrateEnum
     {
-        Baud000110 = 110,
-        Baud000300 = 300,
-        Baud000600 = 600,
-        Baud001200 = 1200,
-        Baud002400 = 2400,
-        Baud004800 = 4800,
-        Baud009600 = 9600,
-        Baud014400 = 14400,
-        Baud019200 = 19200,
-        Baud038400 = 38400,
-        Baud056000 = 56000,
-        Baud057600 = 57600,
-        Baud115200 = 115200,
-        Baud128000 = 128000,    // 128kbps:未使用
-        Baud256000 = 256000,    // 256kbps:未使用
+        Baud_110 = 110,
+        Baud_300 = 300,
+        Baud_600 = 600,
+        Baud_1200 = 1200,
+        Baud_2400 = 2400,
+        Baud_4800 = 4800,
+        Baud_9600 = 9600,
+        Baud_14400 = 14400,
+        Baud_19200 = 19200,
+        Baud_38400 = 38400,
+        Baud_56000 = 56000,
+        Baud_57600 = 57600,
+        Baud_115200 = 115200,
+        Baud_128000 = 128000,   // 128kbps:未使用
+        Baud_256000 = 256000,   // 256kbps:未使用
     }
 
     /// <summary>
@@ -191,8 +191,8 @@ namespace DensoEvaluator
     public class CommunicationSettingData
     {
         // デフォルト設定
-        public const ComPortEnum DEFAULT_COM_PORT = ComPortEnum.Com01;
-        public const BaudrateEnum DEFAULT_BAUDRATE = BaudrateEnum.Baud019200;
+        public const ComPortEnum DEFAULT_COM_PORT = ComPortEnum.Com1;
+        public const BaudrateEnum DEFAULT_BAUDRATE = BaudrateEnum.Baud_19200;
         public const ParityEnum DEFAULT_PARITY = ParityEnum.ParityNone;
         public const DataBitEnum DEFAULT_DATA_BIT = DataBitEnum.DataBit8;
         public const StopBitEnum DEFAULT_STOP_BIT = StopBitEnum.StopBit1;
@@ -218,15 +218,15 @@ namespace DensoEvaluator
         public CommunicationSettingData()
         {
             // 通信ポート設定値とその表示文字列のDictionaryを作る
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com01, "COM1");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com02, "COM2");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com03, "COM3");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com04, "COM4");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com05, "COM5");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com06, "COM6");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com07, "COM7");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com08, "COM8");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com09, "COM9");
+            ComPortEnumNameDictionary.Add(ComPortEnum.Com1, "COM1");
+            ComPortEnumNameDictionary.Add(ComPortEnum.Com2, "COM2");
+            ComPortEnumNameDictionary.Add(ComPortEnum.Com3, "COM3");
+            ComPortEnumNameDictionary.Add(ComPortEnum.Com4, "COM4");
+            ComPortEnumNameDictionary.Add(ComPortEnum.Com5, "COM5");
+            ComPortEnumNameDictionary.Add(ComPortEnum.Com6, "COM6");
+            ComPortEnumNameDictionary.Add(ComPortEnum.Com7, "COM7");
+            ComPortEnumNameDictionary.Add(ComPortEnum.Com8, "COM8");
+            ComPortEnumNameDictionary.Add(ComPortEnum.Com9, "COM9");
             ComPortEnumNameDictionary.Add(ComPortEnum.Com10, "COM10");
             ComPortEnumNameDictionary.Add(ComPortEnum.Com11, "COM11");
             ComPortEnumNameDictionary.Add(ComPortEnum.Com12, "COM12");
@@ -236,21 +236,21 @@ namespace DensoEvaluator
             ComPortEnumNameDictionary.Add(ComPortEnum.Com16, "COM16");
 
             // ボーレート設定値とその表示文字列のDictionaryを作る
-            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud000110, "110");
-            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud000300, "300");
-            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud000600, "600");
-            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud001200, "1200");
-            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud002400, "2400");
-            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud004800, "4800");
-            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud009600, "9600");
-            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud014400, "14400");
-            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud019200, "19200");
-            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud038400, "38400");
-            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud056000, "56000");
-            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud057600, "57600");
-            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud115200, "115200");
-            //BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud128000, "128000");
-            //BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud256000, "256000");
+            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud_110, "110");
+            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud_300, "300");
+            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud_600, "600");
+            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud_1200, "1200");
+            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud_2400, "2400");
+            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud_4800, "4800");
+            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud_9600, "9600");
+            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud_14400, "14400");
+            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud_19200, "19200");
+            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud_38400, "38400");
+            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud_56000, "56000");
+            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud_57600, "57600");
+            BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud_115200, "115200");
+            //BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud_128000, "128000");
+            //BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud_256000, "256000");
 
             // パリティ設定値とその表示文字列のDictionaryを作る
             ParityEnumNameDictionary.Add(ParityEnum.ParityNone, "None");

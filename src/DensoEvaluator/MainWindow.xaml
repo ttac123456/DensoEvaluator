@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DensoEvaluator"
         mc:Ignorable="d"
-        Title="Denso評価画面" Height="470" Width="650" ResizeMode="NoResize" Loaded="Window_Loaded">
+        Title="Denso評価画面" Height="470" Width="650" ResizeMode="NoResize" Loaded="Window_Loaded" Closing="Window_Closing">
 
     <Window.Resources>
         <local:ComPortSettingData x:Key="ComPortSetting" />
