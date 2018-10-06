@@ -32,101 +32,50 @@ namespace DensoEvaluator
         //http://oita.oika.me/2014/11/03/wpf-datagrid-binding/
         //https://social.msdn.microsoft.com/Forums/ja-JP/38e6ae57-4a3c-4ddd-8df5-c3926a473e93/datagridesc?forum=wpfja
 
-        private PersetPositionReader presetPositionReader = new PersetPositionReader();
+        private AppSettings appSettings = new AppSettings();                                ///< アプリケーション設定
+        private PersetPositionReader presetPositionReader = new PersetPositionReader();     ///< 移動位置リーダー
 
-        // 操作方向名称定義
-        //string[] src = { "Tokyo", "Osaka", "Nagoya" };
-
-        private string[] DIRECTION_NAME = { "X", "Y", "Z" };
-
-        // クリック回数
-        private int count = 0;
-
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public MainWindow()
         {
+            // 画面コンポーネント初期化
             InitializeComponent();
 
-            //this.dataGrid_PositionStatus.LoadingRow +=
-            //     (sender, e) => {
-            //         e.Row.Header = DIRECTION_NAME[e.Row.GetIndex()];
-            //     };
+            // デフォルト設定
+            setDefaultSettings();
         }
 
-        CollectionViewSource view = new CollectionViewSource();
-        ObservableCollection<Customer> customers = new ObservableCollection<Customer>();
+        /// <summary>
+        /// デフォルト設定
+        /// </summary>
+        private void setDefaultSettings()
+        {
+            // デフォルト通信設定
+            comboBox_ComPortSetting.SelectedValue = appSettings.ComPort;
+            comboBox_BaudrateSetting.SelectedValue = appSettings.Baudrate;
+            comboBox_ParitySetting.SelectedValue = appSettings.Parity;
+            comboBox_DataBitSetting.SelectedValue = appSettings.DataBit;
+            comboBox_StopBitSetting.SelectedValue = appSettings.StopBit;
+            comboBox_FlowControlSetting.SelectedValue = appSettings.FlowControl;
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-            var dt = new DataTable();
-            dt.Columns.Add("Direction");
-            int itemcount = DIRECTION_NAME.Length;
-            for (int j = 0; j < itemcount; j++)
-            {
-                customers.Add(new Customer()
-                {
-                    Status1 = "stat" + j.ToString(),
-                    Status2 = "stat" + j.ToString(),
-                    Status3 = "stat" + j.ToString(),
-                    Status4 = "stat" + j.ToString(),
-                    Status5 = "stat" + j.ToString(),
-                    Status6 = "stat" + j.ToString(),
-                });
-            }
-
-            view.Source = customers;
-            //this.dataGrid_PositionStatus.DataContext = view;
-
-            presetPositionReader.Load(textBox_SettingCsvPath.Text);
-        }
-
-        class Customer
-        {
-            public string Status1 { get; set; }
-            public string Status2 { get; set; }
-            public string Status3 { get; set; }
-            public string Status4 { get; set; }
-            public string Status5 { get; set; }
-            public string Status6 { get; set; }
         }
 
         // マウスクリックイベント取得
         private void button_MoveUp_Click(object sender, RoutedEventArgs e)
-            {
-            // sender経由でクリックイベントを発生させたボタンを取得
-            var button = (System.Windows.Controls.Button)sender;
-            // ボタンの表示を更新
-            button.Content = string.Format("{0}回", ++count);
-
+        {
         }
 
         private void button_MoveUp_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Console.WriteLine("MouseDown");
         }
 
-        static int i = 10;
         private void button_MoveRear_Click(object sender, RoutedEventArgs e)
         {
-            var dt = new DataTable();
-            dt.Columns.Add("Direction");
-            int itemcount = DIRECTION_NAME.Length;
-            for (int j = 0; j < itemcount; j++)
-            {
-                i += j;
-                customers.Add(new Customer()
-                {
-                    Status1 = "stat" + i.ToString(),
-                    Status2 = "stat" + i.ToString(),
-                    Status3 = "stat" + i.ToString(),
-                    Status4 = "stat" + i.ToString(),
-                    Status5 = "stat" + i.ToString(),
-                    Status6 = "stat" + i.ToString(),
-                });
-            }
-            i++;
-
-            //this.dataGrid_PositionStatus.DataContext = dt;
         }
 
         private void button_PersetPosition_Click(object sender, RoutedEventArgs e)

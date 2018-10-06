@@ -5,7 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DensoEvaluator"
         mc:Ignorable="d"
-        Title="Denso評価画面" Height="450" Width="650" ResizeMode="NoResize" Loaded="Window_Loaded">
+        Title="Denso評価画面" Height="470" Width="650" ResizeMode="NoResize" Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <local:ComPortSettingData x:Key="ComPortSetting" />
+        <local:BaudrateSettingData x:Key="BaudrateSetting" />
+        <local:ParitySettingData x:Key="ParitySetting" />
+        <local:DataBitSettingData x:Key="DataBitSetting" />
+        <local:StopBitSettingData x:Key="StopBitSetting" />
+        <local:FlowControlSettingData x:Key="FlowControlSetting" />
+        <local:CommunicationSettingData x:Key="CommunicationSettings" />
+    </Window.Resources>
+
     <Grid x:Name="groupBox_Main">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -178,34 +189,7 @@
             </Grid>
         </GroupBox>
 
-        <GroupBox x:Name="groupBox_Setting" Header="速度設定" Grid.Row="0" Grid.Column="1" >
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Label   x:Name="label_SettingSpeedLow"     Grid.Row="0" Grid.Column="1" Content="Low"  HorizontalAlignment="Center"/>
-                <Label   x:Name="label_SettingSpeedHigh"    Grid.Row="0" Grid.Column="2" Content="High" HorizontalAlignment="Center"/>
-                <Label   x:Name="label_SettingSpeedX"       Grid.Row="1" Grid.Column="0" Content="X"    HorizontalAlignment="Center"/>
-                <TextBox x:Name="textBox_SettingSpeedLowX"  Grid.Row="1" Grid.Column="1" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" HorizontalAlignment="Right"/>
-                <TextBox x:Name="textBox_SettingSpeedHighX" Grid.Row="1" Grid.Column="2" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" HorizontalAlignment="Right"/>
-                <Label   x:Name="label_SettingSpeedY"       Grid.Row="2" Grid.Column="0" Content="Y"    HorizontalAlignment="Center"/>
-                <TextBox x:Name="textBox_SettingSpeedLowY"  Grid.Row="2" Grid.Column="1" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" HorizontalAlignment="Right"/>
-                <TextBox x:Name="textBox_SettingSpeedHighY" Grid.Row="2" Grid.Column="2" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" HorizontalAlignment="Right"/>
-                <Label   x:Name="label_SettingSpeedZ"       Grid.Row="3" Grid.Column="0" Content="Z"    HorizontalAlignment="Center"/>
-                <TextBox x:Name="textBox_SettingSpeedLowZ"  Grid.Row="3" Grid.Column="1" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" HorizontalAlignment="Right"/>
-                <TextBox x:Name="textBox_SettingSpeedHighZ" Grid.Row="3" Grid.Column="2" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" HorizontalAlignment="Right"/>
-            </Grid>
-        </GroupBox>
-
-        <StackPanel  Grid.Row="1" Grid.Column="0">
+        <StackPanel Grid.Row="1" Grid.Column="0">
             <GroupBox x:Name="groupBox_PresetPosition" Header="移動位置">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5">
@@ -246,51 +230,122 @@
             </GroupBox>
         </StackPanel>
 
-        <GroupBox x:Name="groupBox_PositionStatus" Header="現在位置ステータス" Grid.Row="1" Grid.Column="1" >
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Label   x:Name="label_Status1" Grid.Row="0" Grid.Column="1" Content="stat1" HorizontalAlignment="Center"/>
-                <Label   x:Name="label_Status2" Grid.Row="0" Grid.Column="2" Content="stat2" HorizontalAlignment="Center"/>
-                <Label   x:Name="label_Status3" Grid.Row="0" Grid.Column="3" Content="stat3" HorizontalAlignment="Center"/>
-                <Label   x:Name="label_Status4" Grid.Row="0" Grid.Column="4" Content="stat4" HorizontalAlignment="Center"/>
-                <Label   x:Name="label_Status5" Grid.Row="0" Grid.Column="5" Content="stat5" HorizontalAlignment="Center"/>
-                <Label   x:Name="label_Status6" Grid.Row="0" Grid.Column="6" Content="stat6" HorizontalAlignment="Center"/>
-                <Label   x:Name="label_PosX"          Grid.Row="1" Grid.Column="0" Content="X"    HorizontalAlignment="Center"/>
-                <TextBox x:Name="textBox_PosXStatus1" Grid.Row="1" Grid.Column="1" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
-                <TextBox x:Name="textBox_PosXStatus2" Grid.Row="1" Grid.Column="2" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
-                <TextBox x:Name="textBox_PosXStatus3" Grid.Row="1" Grid.Column="3" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
-                <TextBox x:Name="textBox_PosXStatus4" Grid.Row="1" Grid.Column="4" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
-                <TextBox x:Name="textBox_PosXStatus5" Grid.Row="1" Grid.Column="5" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
-                <TextBox x:Name="textBox_PosXStatus6" Grid.Row="1" Grid.Column="6" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
-                <Label   x:Name="label_PosY"          Grid.Row="2" Grid.Column="0" Content="Y"    HorizontalAlignment="Center"/>
-                <TextBox x:Name="textBox_PosYStatus1" Grid.Row="2" Grid.Column="1" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
-                <TextBox x:Name="textBox_PosYStatus2" Grid.Row="2" Grid.Column="2" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
-                <TextBox x:Name="textBox_PosYStatus3" Grid.Row="2" Grid.Column="3" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
-                <TextBox x:Name="textBox_PosYStatus4" Grid.Row="2" Grid.Column="4" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
-                <TextBox x:Name="textBox_PosYStatus5" Grid.Row="2" Grid.Column="5" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
-                <TextBox x:Name="textBox_PosYStatus6" Grid.Row="2" Grid.Column="6" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
-                <Label   x:Name="label_PosZ"          Grid.Row="3" Grid.Column="0" Content="Z"    HorizontalAlignment="Center"/>
-                <TextBox x:Name="textBox_PosZStatus1" Grid.Row="3" Grid.Column="1" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
-                <TextBox x:Name="textBox_PosZStatus2" Grid.Row="3" Grid.Column="2" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
-                <TextBox x:Name="textBox_PosZStatus3" Grid.Row="3" Grid.Column="3" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
-                <TextBox x:Name="textBox_PosZStatus4" Grid.Row="3" Grid.Column="4" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
-                <TextBox x:Name="textBox_PosZStatus5" Grid.Row="3" Grid.Column="5" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
-                <TextBox x:Name="textBox_PosZStatus6" Grid.Row="3" Grid.Column="6" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
-            </Grid>
-        </GroupBox>
+        <StackPanel Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+            <GroupBox x:Name="groupBox_CommunicationSetting" Header="接続設定">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Content="通信ポート:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right"/>
+                    <ComboBox x:Name="comboBox_ComPortSetting" HorizontalContentAlignment="Center" Grid.Row="0" Grid.Column="1" DataContext="{StaticResource ComPortSetting}"
+                              ItemsSource="{Binding ComPortEnumNameDictionary, Source={StaticResource CommunicationSettings}}" DisplayMemberPath="Value"
+                              SelectedValue="{Binding EnumValueComPort, Mode=TwoWay}" SelectedValuePath="Key" SelectedIndex="0"/>
+                    <Label Content="ボーレート:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right"></Label>
+                    <ComboBox x:Name="comboBox_BaudrateSetting" HorizontalContentAlignment="Center" Grid.Row="1" Grid.Column="1" DataContext="{StaticResource BaudrateSetting}"
+                              ItemsSource="{Binding BaudrateEnumNameDictionary, Source={StaticResource CommunicationSettings}}" DisplayMemberPath="Value"
+                              SelectedValue="{Binding EnumValueBaudrate, Mode=TwoWay}" SelectedValuePath="Key" SelectedIndex="8"/>
+                    <Label Content="パリティ:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right"></Label>
+                    <ComboBox x:Name="comboBox_ParitySetting" HorizontalContentAlignment="Center" Grid.Row="2" Grid.Column="1" DataContext="{StaticResource ParitySetting}"
+                              ItemsSource="{Binding ParityEnumNameDictionary, Source={StaticResource CommunicationSettings}}" DisplayMemberPath="Value"
+                              SelectedValue="{Binding EnumValueParity, Mode=TwoWay}" SelectedValuePath="Key"/>
+                    <Label Content="データビット長:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right"></Label>
+                    <ComboBox x:Name="comboBox_DataBitSetting" HorizontalContentAlignment="Center" Grid.Row="3" Grid.Column="1" DataContext="{StaticResource DataBitSetting}"
+                              ItemsSource="{Binding DataBitEnumNameDictionary, Source={StaticResource CommunicationSettings}}" DisplayMemberPath="Value"
+                              SelectedValue="{Binding EnumValueDataBit, Mode=TwoWay}" SelectedValuePath="Key" SelectedIndex="1"/>
+                    <Label Content="ストップビット:" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right"></Label>
+                    <ComboBox x:Name="comboBox_StopBitSetting" HorizontalContentAlignment="Center" Grid.Row="4" Grid.Column="1" DataContext="{StaticResource StopBitSetting}"
+                              ItemsSource="{Binding StopBitEnumNameDictionary, Source={StaticResource CommunicationSettings}}" DisplayMemberPath="Value"
+                              SelectedValue="{Binding EnumValueStopBit, Mode=TwoWay}" SelectedValuePath="Key"/>
+                    <Label Content="フロー制御:" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right"></Label>
+                    <ComboBox x:Name="comboBox_FlowControlSetting" HorizontalContentAlignment="Center" Grid.Row="5" Grid.Column="1" DataContext="{StaticResource FlowControlSetting}"
+                              ItemsSource="{Binding FlowControlEnumNameDictionary, Source={StaticResource CommunicationSettings}}" DisplayMemberPath="Value"
+                              SelectedValue="{Binding EnumValueFlowControl, Mode=TwoWay}" SelectedValuePath="Key"/>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox x:Name="groupBox_SpeedSetting" Header="速度設定">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label   x:Name="label_SettingSpeedLow"     Grid.Row="0" Grid.Column="1" Content="Low"  HorizontalAlignment="Center"/>
+                    <Label   x:Name="label_SettingSpeedHigh"    Grid.Row="0" Grid.Column="2" Content="High" HorizontalAlignment="Center"/>
+                    <Label   x:Name="label_SettingSpeedX"       Grid.Row="1" Grid.Column="0" Content="X"    HorizontalAlignment="Center"/>
+                    <TextBox x:Name="textBox_SettingSpeedLowX"  Grid.Row="1" Grid.Column="1" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" HorizontalAlignment="Right"/>
+                    <TextBox x:Name="textBox_SettingSpeedHighX" Grid.Row="1" Grid.Column="2" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" HorizontalAlignment="Right"/>
+                    <Label   x:Name="label_SettingSpeedY"       Grid.Row="2" Grid.Column="0" Content="Y"    HorizontalAlignment="Center"/>
+                    <TextBox x:Name="textBox_SettingSpeedLowY"  Grid.Row="2" Grid.Column="1" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" HorizontalAlignment="Right"/>
+                    <TextBox x:Name="textBox_SettingSpeedHighY" Grid.Row="2" Grid.Column="2" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" HorizontalAlignment="Right"/>
+                    <Label   x:Name="label_SettingSpeedZ"       Grid.Row="3" Grid.Column="0" Content="Z"    HorizontalAlignment="Center"/>
+                    <TextBox x:Name="textBox_SettingSpeedLowZ"  Grid.Row="3" Grid.Column="1" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" HorizontalAlignment="Right"/>
+                    <TextBox x:Name="textBox_SettingSpeedHighZ" Grid.Row="3" Grid.Column="2" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" HorizontalAlignment="Right"/>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox x:Name="groupBox_PositionStatus" Header="現在位置ステータス">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label   x:Name="label_Status1" Grid.Row="0" Grid.Column="1" Content="stat1" HorizontalAlignment="Center"/>
+                    <Label   x:Name="label_Status2" Grid.Row="0" Grid.Column="2" Content="stat2" HorizontalAlignment="Center"/>
+                    <Label   x:Name="label_Status3" Grid.Row="0" Grid.Column="3" Content="stat3" HorizontalAlignment="Center"/>
+                    <Label   x:Name="label_Status4" Grid.Row="0" Grid.Column="4" Content="stat4" HorizontalAlignment="Center"/>
+                    <Label   x:Name="label_Status5" Grid.Row="0" Grid.Column="5" Content="stat5" HorizontalAlignment="Center"/>
+                    <Label   x:Name="label_Status6" Grid.Row="0" Grid.Column="6" Content="stat6" HorizontalAlignment="Center"/>
+                    <Label   x:Name="label_PosX"          Grid.Row="1" Grid.Column="0" Content="X"    HorizontalAlignment="Center"/>
+                    <TextBox x:Name="textBox_PosXStatus1" Grid.Row="1" Grid.Column="1" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                    <TextBox x:Name="textBox_PosXStatus2" Grid.Row="1" Grid.Column="2" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                    <TextBox x:Name="textBox_PosXStatus3" Grid.Row="1" Grid.Column="3" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                    <TextBox x:Name="textBox_PosXStatus4" Grid.Row="1" Grid.Column="4" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                    <TextBox x:Name="textBox_PosXStatus5" Grid.Row="1" Grid.Column="5" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                    <TextBox x:Name="textBox_PosXStatus6" Grid.Row="1" Grid.Column="6" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                    <Label   x:Name="label_PosY"          Grid.Row="2" Grid.Column="0" Content="Y"    HorizontalAlignment="Center"/>
+                    <TextBox x:Name="textBox_PosYStatus1" Grid.Row="2" Grid.Column="1" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                    <TextBox x:Name="textBox_PosYStatus2" Grid.Row="2" Grid.Column="2" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                    <TextBox x:Name="textBox_PosYStatus3" Grid.Row="2" Grid.Column="3" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                    <TextBox x:Name="textBox_PosYStatus4" Grid.Row="2" Grid.Column="4" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                    <TextBox x:Name="textBox_PosYStatus5" Grid.Row="2" Grid.Column="5" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                    <TextBox x:Name="textBox_PosYStatus6" Grid.Row="2" Grid.Column="6" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                    <Label   x:Name="label_PosZ"          Grid.Row="3" Grid.Column="0" Content="Z"    HorizontalAlignment="Center"/>
+                    <TextBox x:Name="textBox_PosZStatus1" Grid.Row="3" Grid.Column="1" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                    <TextBox x:Name="textBox_PosZStatus2" Grid.Row="3" Grid.Column="2" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                    <TextBox x:Name="textBox_PosZStatus3" Grid.Row="3" Grid.Column="3" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                    <TextBox x:Name="textBox_PosZStatus4" Grid.Row="3" Grid.Column="4" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                    <TextBox x:Name="textBox_PosZStatus5" Grid.Row="3" Grid.Column="5" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                    <TextBox x:Name="textBox_PosZStatus6" Grid.Row="3" Grid.Column="6" Text="" TextWrapping="Wrap" TextAlignment="Center" Width="48" Margin="2" HorizontalAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                </Grid>
+            </GroupBox>
+        </StackPanel>
+
     </Grid>
 </Window>
