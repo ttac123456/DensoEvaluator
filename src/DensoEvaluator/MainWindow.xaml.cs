@@ -63,14 +63,17 @@ namespace DensoEvaluator
             comboBox_FlowControlSetting.SelectedValue = appSettings.FlowControl;
         }
 
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Initialized(object sender, EventArgs e)
         {
             // アプリケーション設定インスタンスを取得
             AppSettings appSettings = AppSettings.GetInstance();
 
             // アプリケーション設定を読み込む
             appSettings.Load();
+
+            // ウィンドウ位置
+            Left = appSettings.WindowPosX;
+            Top = appSettings.WindowPosY;
 
             // 通信設定
             comboBox_ComPortSetting.SelectedValue = appSettings.ComPort;
@@ -79,12 +82,34 @@ namespace DensoEvaluator
             comboBox_DataBitSetting.SelectedValue = appSettings.DataBit;
             comboBox_StopBitSetting.SelectedValue = appSettings.StopBit;
             comboBox_FlowControlSetting.SelectedValue = appSettings.FlowControl;
+
+            // 移動位置設定
+            textBox_SettingCsvPath.Text = appSettings.PositionSettingCsvPath;
+
+            // 速度設定
+            textBox_SettingSpeedLowX.Text = appSettings.SpeedXLow.ToString();
+            textBox_SettingSpeedHighX.Text = appSettings.SpeedXHigh.ToString();
+            textBox_SettingSpeedLowY.Text = appSettings.SpeedYLow.ToString();
+            textBox_SettingSpeedHighY.Text = appSettings.SpeedYHigh.ToString();
+            textBox_SettingSpeedLowZ.Text = appSettings.SpeedZLow.ToString();
+            textBox_SettingSpeedHighZ.Text = appSettings.SpeedZHigh.ToString();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             // アプリケーション設定インスタンスを取得
             AppSettings appSettings = AppSettings.GetInstance();
+
+            // 速度設定
+            appSettings.SpeedXLow = UInt32.Parse(textBox_SettingSpeedLowX.Text);
+            appSettings.SpeedXHigh = UInt32.Parse(textBox_SettingSpeedHighX.Text);
+            appSettings.SpeedYLow = UInt32.Parse(textBox_SettingSpeedLowY.Text);
+            appSettings.SpeedYHigh = UInt32.Parse(textBox_SettingSpeedHighY.Text);
+            appSettings.SpeedZLow = UInt32.Parse(textBox_SettingSpeedLowZ.Text);
+            appSettings.SpeedZHigh = UInt32.Parse(textBox_SettingSpeedHighZ.Text);
+
+            // 移動位置設定
+            appSettings.PositionSettingCsvPath = textBox_SettingCsvPath.Text;
 
             // 通信設定
             appSettings.ComPort = (ComPortEnum)comboBox_ComPortSetting.SelectedValue;
@@ -93,6 +118,10 @@ namespace DensoEvaluator
             appSettings.DataBit = (DataBitEnum)comboBox_DataBitSetting.SelectedValue;
             appSettings.StopBit = (StopBitEnum)comboBox_StopBitSetting.SelectedValue;
             appSettings.FlowControl = (FlowControlEnum)comboBox_FlowControlSetting.SelectedValue;
+
+            // ウィンドウ位置
+            appSettings.WindowPosX = Left;
+            appSettings.WindowPosY = Top;
 
             // アプリケーション設定を保存する
             appSettings.Save();
