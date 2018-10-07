@@ -42,6 +42,9 @@ namespace DensoEvaluator
             // 画面コンポーネント初期化
             InitializeComponent();
 
+            // DataContextに入力データ検証クラスを用いることを追加
+            this.DataContext = new InputDataValidater();
+
             // デフォルト設定
             setDefaultSettings();
         }
@@ -74,6 +77,12 @@ namespace DensoEvaluator
             // ウィンドウ位置
             Left = appSettings.WindowPosX;
             Top = appSettings.WindowPosY;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            // アプリケーション設定インスタンスを取得
+            AppSettings appSettings = AppSettings.GetInstance();
 
             // 通信設定
             comboBox_ComPortSetting.SelectedValue = appSettings.ComPort;
@@ -101,12 +110,13 @@ namespace DensoEvaluator
             AppSettings appSettings = AppSettings.GetInstance();
 
             // 速度設定
-            appSettings.SpeedXLow = UInt32.Parse(textBox_SettingSpeedLowX.Text);
-            appSettings.SpeedXHigh = UInt32.Parse(textBox_SettingSpeedHighX.Text);
-            appSettings.SpeedYLow = UInt32.Parse(textBox_SettingSpeedLowY.Text);
-            appSettings.SpeedYHigh = UInt32.Parse(textBox_SettingSpeedHighY.Text);
-            appSettings.SpeedZLow = UInt32.Parse(textBox_SettingSpeedLowZ.Text);
-            appSettings.SpeedZHigh = UInt32.Parse(textBox_SettingSpeedHighZ.Text);
+            UInt32 speed;
+            if (UInt32.TryParse(textBox_SettingSpeedLowX.Text,  out speed)) appSettings.SpeedXLow  = speed;
+            if (UInt32.TryParse(textBox_SettingSpeedHighX.Text, out speed)) appSettings.SpeedXHigh = speed;
+            if (UInt32.TryParse(textBox_SettingSpeedLowY.Text,  out speed)) appSettings.SpeedYLow  = speed;
+            if (UInt32.TryParse(textBox_SettingSpeedHighY.Text, out speed)) appSettings.SpeedYHigh = speed;
+            if (UInt32.TryParse(textBox_SettingSpeedLowZ.Text,  out speed)) appSettings.SpeedZLow  = speed;
+            if (UInt32.TryParse(textBox_SettingSpeedHighZ.Text, out speed)) appSettings.SpeedZHigh = speed;
 
             // 移動位置設定
             appSettings.PositionSettingCsvPath = textBox_SettingCsvPath.Text;
@@ -155,6 +165,13 @@ namespace DensoEvaluator
                     position[2].ToString());
             else
                 Console.WriteLine(buttonContent);
+        }
+
+        private void textBox_SettingSpeed_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // BindingExpressionを使って強制的にバインディングソースへ反映させる
+            var be = (sender as System.Windows.Controls.TextBox).GetBindingExpression(System.Windows.Controls.TextBox.TextProperty);
+            be.UpdateSource();
         }
     }
 }

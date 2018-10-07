@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DensoEvaluator"
         mc:Ignorable="d"
-        Title="Denso評価画面" Height="470" Width="650" ResizeMode="NoResize" Closing="Window_Closing" Initialized="Window_Initialized">
+        Title="Denso評価画面" Height="470" Width="650" ResizeMode="NoResize" Closing="Window_Closing" Initialized="Window_Initialized" Loaded="Window_Loaded">
 
     <Window.Resources>
+        <!-- 通信設定コンボボックス制御用リソース -->
         <local:ComPortSettingData x:Key="ComPortSetting" />
         <local:BaudrateSettingData x:Key="BaudrateSetting" />
         <local:ParitySettingData x:Key="ParitySetting" />
@@ -15,6 +16,17 @@
         <local:StopBitSettingData x:Key="StopBitSetting" />
         <local:FlowControlSettingData x:Key="FlowControlSetting" />
         <local:CommunicationSettingData x:Key="CommunicationSettings" />
+
+        <!-- 整数入力エラー時にツールチップを表示するスタイル。
+             TextBoxにエラーがあれば、ToolTipにエラー内容を表示し、背景色をピンクにすることを指定。 -->
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                    <Setter Property="Background" Value="#ffeeff" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
 
     <Grid x:Name="groupBox_Main">
@@ -288,14 +300,14 @@
                     <Label   x:Name="label_SettingSpeedLow"     Grid.Row="0" Grid.Column="1" Content="Low"  HorizontalAlignment="Center"/>
                     <Label   x:Name="label_SettingSpeedHigh"    Grid.Row="0" Grid.Column="2" Content="High" HorizontalAlignment="Center"/>
                     <Label   x:Name="label_SettingSpeedX"       Grid.Row="1" Grid.Column="0" Content="X"    HorizontalAlignment="Center"/>
-                    <TextBox x:Name="textBox_SettingSpeedLowX"  Grid.Row="1" Grid.Column="1" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" TextAlignment="Right"/>
-                    <TextBox x:Name="textBox_SettingSpeedHighX" Grid.Row="1" Grid.Column="2" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" TextAlignment="Right"/>
+                    <TextBox x:Name="textBox_SettingSpeedLowX"  Grid.Row="1" Grid.Column="1" Width="72" Margin="2" TextAlignment="Right" Text="{Binding SpeedLowX,  ValidatesOnDataErrors=True}" TextChanged="textBox_SettingSpeed_TextChanged"/>
+                    <TextBox x:Name="textBox_SettingSpeedHighX" Grid.Row="1" Grid.Column="2" Width="72" Margin="2" TextAlignment="Right" Text="{Binding SpeedHighX, ValidatesOnDataErrors=True}" TextChanged="textBox_SettingSpeed_TextChanged"/>
                     <Label   x:Name="label_SettingSpeedY"       Grid.Row="2" Grid.Column="0" Content="Y"    HorizontalAlignment="Center"/>
-                    <TextBox x:Name="textBox_SettingSpeedLowY"  Grid.Row="2" Grid.Column="1" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" TextAlignment="Right"/>
-                    <TextBox x:Name="textBox_SettingSpeedHighY" Grid.Row="2" Grid.Column="2" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" TextAlignment="Right"/>
+                    <TextBox x:Name="textBox_SettingSpeedLowY"  Grid.Row="2" Grid.Column="1" Width="72" Margin="2" TextAlignment="Right" Text="{Binding SpeedLowY,  ValidatesOnDataErrors=True}" TextChanged="textBox_SettingSpeed_TextChanged"/>
+                    <TextBox x:Name="textBox_SettingSpeedHighY" Grid.Row="2" Grid.Column="2" Width="72" Margin="2" TextAlignment="Right" Text="{Binding SpeedHighY, ValidatesOnDataErrors=True}" TextChanged="textBox_SettingSpeed_TextChanged"/>
                     <Label   x:Name="label_SettingSpeedZ"       Grid.Row="3" Grid.Column="0" Content="Z"    HorizontalAlignment="Center"/>
-                    <TextBox x:Name="textBox_SettingSpeedLowZ"  Grid.Row="3" Grid.Column="1" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" TextAlignment="Right"/>
-                    <TextBox x:Name="textBox_SettingSpeedHighZ" Grid.Row="3" Grid.Column="2" Text="123456789" TextWrapping="Wrap" Width="72" Margin="2" TextAlignment="Right"/>
+                    <TextBox x:Name="textBox_SettingSpeedLowZ"  Grid.Row="3" Grid.Column="1" Width="72" Margin="2" TextAlignment="Right" Text="{Binding SpeedLowZ,  ValidatesOnDataErrors=True}" TextChanged="textBox_SettingSpeed_TextChanged"/>
+                    <TextBox x:Name="textBox_SettingSpeedHighZ" Grid.Row="3" Grid.Column="2" Width="72" Margin="2" TextAlignment="Right" Text="{Binding SpeedHighZ, ValidatesOnDataErrors=True}" TextChanged="textBox_SettingSpeed_TextChanged"/>
                 </Grid>
             </GroupBox>
 

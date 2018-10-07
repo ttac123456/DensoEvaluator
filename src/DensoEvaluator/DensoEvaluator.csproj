@@ -71,6 +71,7 @@
     <Compile Include="AppSettings.cs" />
     <Compile Include="BindableBase.cs" />
     <Compile Include="CommunicationSettingData.cs" />
+    <Compile Include="InputDataValidater.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
