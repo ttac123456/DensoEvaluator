@@ -176,5 +176,21 @@ namespace DensoEvaluator
             var be = (sender as System.Windows.Controls.TextBox).GetBindingExpression(System.Windows.Controls.TextBox.TextProperty);
             be.UpdateSource();
         }
+
+        private void button_SettingCsvPath_Click(object sender, RoutedEventArgs e)
+        {
+            // ダイアログのインスタンスを生成
+            var dialog = new Microsoft.Win32.OpenFileDialog();
+
+            // ファイルの種類を設定
+            dialog.Filter = "CSVファイル (*.csv)|*.csv|全てのファイル (*.*)|*.*";
+
+            // ダイアログを表示する
+            if (dialog.ShowDialog() == true)
+            {
+                // 選択されたファイル名 (ファイルパス) をメッセージボックスに表示
+                System.Windows.MessageBox.Show(dialog.FileName);
+            }
+        }
     }
 }
