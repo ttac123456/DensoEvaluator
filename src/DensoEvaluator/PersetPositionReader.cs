@@ -17,11 +17,14 @@ namespace DensoEvaluator
             dictPresetPosition.Clear();
         }
 
-        public void Load(string filePath)
+        public bool Load(string filePath)
         {
+            bool loadResult = false;
             StreamReader sr = new StreamReader(filePath, Encoding.GetEncoding("Shift_JIS"));
             try
             {
+                Dictionary<string, List<double>> tempDictPresetPosition = new Dictionary<string, List<double>>();
+
                 while (sr.EndOfStream == false)
                 {
                     string line = sr.ReadLine();
@@ -44,19 +47,30 @@ namespace DensoEvaluator
                         }
                         Console.WriteLine();
                         if (listPosition.Count > 0)
-                            dictPresetPosition.Add(index.ToString("00"), listPosition);
+                        {
+                            tempDictPresetPosition.Add(index.ToString("00"), listPosition);
+                        }
                     }
+                }
+                if (tempDictPresetPosition.Count > 0)
+                {
+                    dictPresetPosition = tempDictPresetPosition;
+                    loadResult = true;
                 }
             }
             finally
             {
                 sr.Close();
             }
+            return loadResult;
         }
 
         public List<double> GetPosition(string indexText)
         {
-            return dictPresetPosition[indexText];
+            if (dictPresetPosition.Count > 0)
+                return dictPresetPosition[indexText];
+            else
+                return null;
         }
     }
 }

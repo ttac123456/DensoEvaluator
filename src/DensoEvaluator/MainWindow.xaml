@@ -73,7 +73,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="button_MoveRear"  Grid.Row="0" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" Click="button_MoveRear_Click">
+                <Button x:Name="button_MoveRear"  Grid.Row="0" Grid.Column="1" Background="Transparent" BorderBrush="Transparent">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Template">
@@ -226,7 +226,7 @@
                     </StackPanel>
                     <GroupBox x:Name="groupBox_LoadPosition" Header="位置ロード">
                         <DockPanel LastChildFill="True">
-                            <TextBox x:Name="textBox_SettingCsvPath" Text="PresetPositionSetting.csv" TextAlignment="Left" DockPanel.Dock="Left" Width="240"/>
+                            <local:PathTextBox x:Name="textBox_SettingCsvPath" Text="PresetPositionSetting.csv" TextAlignment="Left" DockPanel.Dock="Left" Width="240" InputTextChanged="PathTextBox_InputTextChanged"/>
                             <Button x:Name="button_SettingCsvPath"  Content="参照" HorizontalAlignment="Right" DockPanel.Dock="Right" Click="button_SettingCsvPath_Click"/>
                         </DockPanel>
                     </GroupBox>

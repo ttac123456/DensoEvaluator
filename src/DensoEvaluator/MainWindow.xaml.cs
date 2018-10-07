@@ -14,9 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 using System.Collections.ObjectModel;
-
 using Microsoft.Win32;
 using System.Data;
 using System.IO;
@@ -25,6 +23,20 @@ using System.Text.RegularExpressions;
 namespace DensoEvaluator
 {
     /// <summary>
+    /// ファイルパス編集用のTextBoxクラス
+    /// </summary>
+    internal class PathTextBox : System.Windows.Controls.TextBox
+    {
+        public event EventHandler InputTextChanged;
+        public PathTextBox()
+        {
+            var oldVal = string.Empty;
+            this.GotFocus += (sender, e) => { oldVal = this.Text; };
+            this.LostFocus += (sender, e) => { if (oldVal != this.Text && InputTextChanged != null) { InputTextChanged(sender, e); } };
+        }
+    }
+
+    /// <summary>
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window
@@ -32,6 +44,7 @@ namespace DensoEvaluator
         //http://oita.oika.me/2014/11/03/wpf-datagrid-binding/
         //https://social.msdn.microsoft.com/Forums/ja-JP/38e6ae57-4a3c-4ddd-8df5-c3926a473e93/datagridesc?forum=wpfja
 
+        // メンバ変数
         private PersetPositionReader presetPositionReader = new PersetPositionReader();     ///< 移動位置リーダー
 
         /// <summary>
@@ -66,6 +79,11 @@ namespace DensoEvaluator
             comboBox_FlowControlSetting.SelectedValue = appSettings.FlowControl;
         }
 
+        /// <summary>
+        /// ウィンドウ初期化完了イベントハンドラ
+        /// </summary>
+        /// <param name="sender">呼び出し元</param>
+        /// <param name="e">イベントパラメータ</param>
         private void Window_Initialized(object sender, EventArgs e)
         {
             // アプリケーション設定インスタンスを取得
@@ -79,6 +97,11 @@ namespace DensoEvaluator
             Top = appSettings.WindowPosY;
         }
 
+        /// <summary>
+        /// ウィンドウロード完了イベントハンドラ
+        /// </summary>
+        /// <param name="sender">呼び出し元</param>
+        /// <param name="e">イベントパラメータ</param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // アプリケーション設定インスタンスを取得
@@ -104,9 +127,14 @@ namespace DensoEvaluator
             textBox_SettingSpeedHighZ.Text = appSettings.SpeedZHigh.ToString();
 
             // 移動位置設定をロード
-            presetPositionReader.Load(appSettings.PositionSettingCsvPath);
+            loadPresetPositionSetting(textBox_SettingCsvPath.Text);
         }
 
+        /// <summary>
+        /// ウィンドウクローズ処理中イベントハンドラ
+        /// </summary>
+        /// <param name="sender">呼び出し元</param>
+        /// <param name="e">イベントパラメータ</param>
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             // アプリケーション設定インスタンスを取得
@@ -140,19 +168,11 @@ namespace DensoEvaluator
             appSettings.Save();
         }
 
-        // マウスクリックイベント取得
-        private void button_MoveUp_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void button_MoveUp_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-        }
-
-        private void button_MoveRear_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
+        /// <summary>
+        /// プリセット位置移動ボタンクリックイベントハンドラ
+        /// </summary>
+        /// <param name="sender">呼び出し元</param>
+        /// <param name="e">イベントパラメータ</param>
         private void button_PersetPosition_Click(object sender, RoutedEventArgs e)
         {
             // 押されたボタンのindexを取得
@@ -161,7 +181,7 @@ namespace DensoEvaluator
             var position = presetPositionReader.GetPosition(buttonContent);
 
             // forDebug:デバッグ出力
-            if (position.Count > 0)
+            if ((position != null) && (position.Count > 0))
                 Console.WriteLine(buttonContent + ":" +
                     position[0].ToString() + "," +
                     position[1].ToString() + "," +
@@ -170,6 +190,11 @@ namespace DensoEvaluator
                 Console.WriteLine(buttonContent);
         }
 
+        /// <summary>
+        /// 速度設定テキスト編集イベントハンドラ
+        /// </summary>
+        /// <param name="sender">呼び出し元</param>
+        /// <param name="e">イベントパラメータ</param>
         private void textBox_SettingSpeed_TextChanged(object sender, TextChangedEventArgs e)
         {
             // BindingExpressionを使って強制的にバインディングソースへ反映させる
@@ -177,20 +202,64 @@ namespace DensoEvaluator
             be.UpdateSource();
         }
 
+        /// <summary>
+        /// プリセット位置設定CSVファイル参照ボタンクリックイベントハンドラ
+        /// </summary>
+        /// <param name="sender">呼び出し元</param>
+        /// <param name="e">イベントパラメータ</param>
         private void button_SettingCsvPath_Click(object sender, RoutedEventArgs e)
         {
             // ダイアログのインスタンスを生成
             var dialog = new Microsoft.Win32.OpenFileDialog();
-
             // ファイルの種類を設定
             dialog.Filter = "CSVファイル (*.csv)|*.csv|全てのファイル (*.*)|*.*";
-
             // ダイアログを表示する
             if (dialog.ShowDialog() == true)
             {
-                // 選択されたファイル名 (ファイルパス) をメッセージボックスに表示
-                System.Windows.MessageBox.Show(dialog.FileName);
+                // 選択されたファイルパスを取得する
+                Uri　uriSelectedFile = new Uri(dialog.FileName);
+                // カレントディレクトリを取得する
+                Uri uriCurrentDir = new Uri(Directory.GetCurrentDirectory() + "\\");
+                // 選択されたファイルの相対パスを取得する
+                string strRelativePath = uriCurrentDir.MakeRelativeUri(uriSelectedFile).ToString();
+
+                // 移動位置設定をロード
+                if (loadPresetPositionSetting(strRelativePath))
+                {
+                    // 選択されたファイルの相対パスをTextBoxに表示
+                    textBox_SettingCsvPath.Text = strRelativePath;
+                }
             }
+        }
+
+        /// <summary>
+        /// ファイルパスTextBox編集完了イベントハンドラ
+        /// </summary>
+        /// <param name="sender">呼び出し元</param>
+        /// <param name="e">イベントパラメータ</param>
+        private void PathTextBox_InputTextChanged(object sender, EventArgs e)
+        {
+            // 移動位置設定をロード
+            loadPresetPositionSetting(textBox_SettingCsvPath.Text);
+        }
+
+        /// <summary>
+        /// 移動位置設定をロードする
+        /// </summary>
+        /// <param name="csvFilePath">ロード対象のCSVファイルパス</param>
+        private bool loadPresetPositionSetting(string csvFilePath)
+        {
+            bool loadResult = false;
+            if (File.Exists(csvFilePath))
+            {
+                // 移動位置設定をロード
+                loadResult = presetPositionReader.Load(csvFilePath);
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("ファイル「" + csvFilePath + "」は存在しません。");
+            }
+            return loadResult;
         }
     }
 }
