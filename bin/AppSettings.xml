@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AppSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ComPort>Com1</ComPort>
+  <Baudrate>Baud_19200</Baudrate>
+  <Parity>ParityNone</Parity>
+  <DataBit>DataBit8</DataBit>
+  <StopBit>StopBit1</StopBit>
+  <FlowControl>FlowNone</FlowControl>
+  <Number>0</Number>
+</AppSettings>
