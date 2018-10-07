@@ -102,6 +102,9 @@ namespace DensoEvaluator
             textBox_SettingSpeedHighY.Text = appSettings.SpeedYHigh.ToString();
             textBox_SettingSpeedLowZ.Text = appSettings.SpeedZLow.ToString();
             textBox_SettingSpeedHighZ.Text = appSettings.SpeedZHigh.ToString();
+
+            // 移動位置設定をロード
+            presetPositionReader.Load(appSettings.PositionSettingCsvPath);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
