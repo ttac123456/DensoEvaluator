@@ -2,17 +2,21 @@
 <AppSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <WindowPosX>0</WindowPosX>
   <WindowPosY>0</WindowPosY>
-  <ComPort>Com1</ComPort>
+  <ComPort>Com11</ComPort>
   <Baudrate>Baud_19200</Baudrate>
   <Parity>ParityNone</Parity>
   <DataBit>DataBit8</DataBit>
   <StopBit>StopBit1</StopBit>
   <FlowControl>FlowNone</FlowControl>
   <PositionSettingCsvPath>PresetPositionSetting.csv</PositionSettingCsvPath>
+  <ReferPositionIntgerval>50</ReferPositionIntgerval>
   <SpeedXHigh>123456789</SpeedXHigh>
   <SpeedXLow>23456789</SpeedXLow>
   <SpeedYHigh>123456789</SpeedYHigh>
   <SpeedYLow>23456789</SpeedYLow>
   <SpeedZHigh>123456789</SpeedZHigh>
   <SpeedZLow>23456789</SpeedZLow>
+  <MoveStepOneshot>100</MoveStepOneshot>
+  <MoveStepCyclic>1000</MoveStepCyclic>
+  <MoveIntervalCyclic>1000</MoveIntervalCyclic>
 </AppSettings>

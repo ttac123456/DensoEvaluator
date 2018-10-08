@@ -13,9 +13,9 @@ using System.Threading.Tasks;
 namespace DensoEvaluator
 {
     /// <summary>
-    /// 通信ポート設定値定義
+    /// 通信ポート番号設定値定義
     /// </summary>
-    public enum ComPortEnum
+    public enum ComPortNumEnum
     {
         Com1 = 1,
         Com2,
@@ -36,17 +36,17 @@ namespace DensoEvaluator
     }
 
     /// <summary>
-    /// 通信ポート設定値クラス
+    /// 通信ポート番号設定値クラス
     /// </summary>
-    public class ComPortSettingData : BindableBase
+    public class ComPortNumSettingData : BindableBase
     {
         // 画面とバインドしたい列挙型のプロパティ
-        private ComPortEnum _enumValueComPort;
-        public ComPortEnum EnumValueComPort
+        private ComPortNumEnum _enumValueComPortNum;
+        public ComPortNumEnum EnumValueComPortNum
         {
-            get => _enumValueComPort;
-            set => SetProperty(ref _enumValueComPort, value);
-        }                                               ///< 通信ポート設定値プロパティ
+            get => _enumValueComPortNum;
+            set => SetProperty(ref _enumValueComPortNum, value);
+        }                                               ///< 通信ポート番号設定値プロパティ
     }
 
     /// <summary>
@@ -186,12 +186,12 @@ namespace DensoEvaluator
     }
 
     /// <summary>
-    /// 通信設定データクラス
+    /// ComPort通信設定データクラス
     /// </summary>
-    public class CommunicationSettingData
+    public class ComPortSettingDatas
     {
         // デフォルト設定
-        public const ComPortEnum DEFAULT_COM_PORT = ComPortEnum.Com1;
+        public const ComPortNumEnum DEFAULT_COM_PORT_NUM = ComPortNumEnum.Com1;
         public const BaudrateEnum DEFAULT_BAUDRATE = BaudrateEnum.Baud_19200;
         public const ParityEnum DEFAULT_PARITY = ParityEnum.ParityNone;
         public const DataBitEnum DEFAULT_DATA_BIT = DataBitEnum.DataBit8;
@@ -199,8 +199,8 @@ namespace DensoEvaluator
         public const FlowControlEnum DEFAULT_FLOW_CONTROL = FlowControlEnum.FlowNone;
 
         // ComboBoxの一覧に表示するデータ
-        public Dictionary<ComPortEnum, string> ComPortEnumNameDictionary { get; }
-          = new Dictionary<ComPortEnum, string>();          ///< 通信ポート設定値一覧データ
+        public Dictionary<ComPortNumEnum, string> ComPortNumEnumNameDictionary { get; }
+          = new Dictionary<ComPortNumEnum, string>();       ///< 通信ポート設定値一覧データ
         public Dictionary<BaudrateEnum, string> BaudrateEnumNameDictionary { get; }
           = new Dictionary<BaudrateEnum, string>();         ///< ボーレート設定値一覧データ
         public Dictionary<ParityEnum, string> ParityEnumNameDictionary { get; }
@@ -215,25 +215,25 @@ namespace DensoEvaluator
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public CommunicationSettingData()
+        public ComPortSettingDatas()
         {
             // 通信ポート設定値とその表示文字列のDictionaryを作る
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com1, "COM1");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com2, "COM2");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com3, "COM3");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com4, "COM4");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com5, "COM5");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com6, "COM6");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com7, "COM7");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com8, "COM8");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com9, "COM9");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com10, "COM10");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com11, "COM11");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com12, "COM12");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com13, "COM13");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com14, "COM14");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com15, "COM15");
-            ComPortEnumNameDictionary.Add(ComPortEnum.Com16, "COM16");
+            ComPortNumEnumNameDictionary.Add(ComPortNumEnum.Com1, "COM1");
+            ComPortNumEnumNameDictionary.Add(ComPortNumEnum.Com2, "COM2");
+            ComPortNumEnumNameDictionary.Add(ComPortNumEnum.Com3, "COM3");
+            ComPortNumEnumNameDictionary.Add(ComPortNumEnum.Com4, "COM4");
+            ComPortNumEnumNameDictionary.Add(ComPortNumEnum.Com5, "COM5");
+            ComPortNumEnumNameDictionary.Add(ComPortNumEnum.Com6, "COM6");
+            ComPortNumEnumNameDictionary.Add(ComPortNumEnum.Com7, "COM7");
+            ComPortNumEnumNameDictionary.Add(ComPortNumEnum.Com8, "COM8");
+            ComPortNumEnumNameDictionary.Add(ComPortNumEnum.Com9, "COM9");
+            ComPortNumEnumNameDictionary.Add(ComPortNumEnum.Com10, "COM10");
+            ComPortNumEnumNameDictionary.Add(ComPortNumEnum.Com11, "COM11");
+            ComPortNumEnumNameDictionary.Add(ComPortNumEnum.Com12, "COM12");
+            ComPortNumEnumNameDictionary.Add(ComPortNumEnum.Com13, "COM13");
+            ComPortNumEnumNameDictionary.Add(ComPortNumEnum.Com14, "COM14");
+            ComPortNumEnumNameDictionary.Add(ComPortNumEnum.Com15, "COM15");
+            ComPortNumEnumNameDictionary.Add(ComPortNumEnum.Com16, "COM16");
 
             // ボーレート設定値とその表示文字列のDictionaryを作る
             BaudrateEnumNameDictionary.Add(BaudrateEnum.Baud_110, "110");
@@ -276,5 +276,6 @@ namespace DensoEvaluator
             FlowControlEnumNameDictionary.Add(FlowControlEnum.FlowRtsCts, "RTS/CTS");
             FlowControlEnumNameDictionary.Add(FlowControlEnum.FlowXonXoff, "Xon/Xoff");
         }
+
     }
 }

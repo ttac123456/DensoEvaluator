@@ -11,8 +11,8 @@ namespace DensoEvaluator
     /// </summary>
     public sealed class AppSettings
     {
+        // シングルトンインスタンスの生成
         private static AppSettings _singleInstance = new AppSettings();
-
         public static AppSettings GetInstance()
         {
             return _singleInstance;
@@ -21,15 +21,21 @@ namespace DensoEvaluator
         // 設定ファイル名
         private const string APP_SETTING_FILENAME = "AppSettings.xml";                  ///< アプリ設定ファイル名
         private const string POSITION_SETTING_FILENAME = "PresetPositionSetting.csv";   ///< 移動位置設定ファイル名
+
+        // デフォルト値設定
+        private const UInt16 REFER_POSITION_INTERVAL = 50;      ///< 現在位置確認周期(msec)
         private const UInt32 SPEED_SETTING_HIGH = 123456789;    ///< 移動速度設定HIGH
         private const UInt32 SPEED_SETTING_LOW = 23456789;      ///< 移動速度設定LOW
+        private const UInt16 MOVE_STEP_ONESHOT = 100;           ///< 移動幅(ワンショット)
+        private const UInt16 MOVE_STEP_CYCLIC = 1000;           ///< 移動幅(長押し連続)
+        private const UInt16 MOVE_INTERVAL_CYCLIC = 1000;       ///< 移動周期(msec)(長押し連続)
 
         // ウィンドウ位置
         private double _windowPosX;
         private double _windowPosY;
 
         // 通信設定
-        private ComPortEnum _comPort;
+        private ComPortNumEnum _comPort;
         private BaudrateEnum _baudrate;
         private ParityEnum _parity;
         private DataBitEnum _dataBit;
@@ -39,6 +45,9 @@ namespace DensoEvaluator
         // 移動位置設定
         private string _positionSettingCsvPath;
 
+        // 現在位置確認周期設定
+        private UInt16 _referPositionIntgerval;
+
         // 速度設定
         private UInt32 _speedXHigh;
         private UInt32 _speedXLow;
@@ -46,6 +55,11 @@ namespace DensoEvaluator
         private UInt32 _speedYLow;
         private UInt32 _speedZHigh;
         private UInt32 _speedZLow;
+
+        // 移動幅/周期設定
+        private UInt16 _moveStepOneshot;
+        private UInt16 _moveStepCyclic;
+        private UInt16 _moveIntervalCyclic;
 
         public double WindowPosX
         {
@@ -59,7 +73,7 @@ namespace DensoEvaluator
             set { _windowPosY = value; }
         }
 
-        public ComPortEnum ComPort
+        public ComPortNumEnum ComPort
         {
             get { return _comPort; }
             set { _comPort = value; }
@@ -101,12 +115,17 @@ namespace DensoEvaluator
             set { _positionSettingCsvPath = value; }
         }
 
+        public UInt16 ReferPositionIntgerval
+        {
+            get { return _referPositionIntgerval; }
+            set { _referPositionIntgerval = value; }
+        }
+
         public UInt32 SpeedXHigh
         {
             get { return _speedXHigh; }
             set { _speedXHigh = value; }
         }
-
         public UInt32 SpeedXLow
         {
             get { return _speedXLow; }
@@ -135,6 +154,22 @@ namespace DensoEvaluator
             set { _speedZLow = value; }
         }
 
+        public UInt16 MoveStepOneshot
+        {
+            get { return _moveStepOneshot; }
+            set { _moveStepOneshot = value; }
+        }
+        public UInt16 MoveStepCyclic
+        {
+            get { return _moveStepCyclic; }
+            set { _moveStepCyclic = value; }
+        }
+        public UInt16 MoveIntervalCyclic
+        {
+            get { return _moveIntervalCyclic; }
+            set { _moveIntervalCyclic = value; }
+        }
+
         private AppSettings()
         {
             // デフォルトウィンドウ位置設定
@@ -143,8 +178,13 @@ namespace DensoEvaluator
             SetDefaultCommnicationSetting();
             // デフォルト移動位置設定
             SetDefaultPositionSetting();
+            // デフォルト現在位置確認周期設定
+            SetDefaultReferPositionIntgerval();
             // デフォルト速度設定
             SetDefaultSpeedSetting();
+            // デフォルト移動幅/周期設定
+            SetDefaultMoveStep();
+
         }
 
         /// <summary>
@@ -169,12 +209,20 @@ namespace DensoEvaluator
         /// </summary>
         public void SetDefaultCommnicationSetting()
         {
-            _comPort = CommunicationSettingData.DEFAULT_COM_PORT;
-            _baudrate = CommunicationSettingData.DEFAULT_BAUDRATE;
-            _parity = CommunicationSettingData.DEFAULT_PARITY;
-            _dataBit = CommunicationSettingData.DEFAULT_DATA_BIT;
-            _stopBit = CommunicationSettingData.DEFAULT_STOP_BIT;
-            _flowControl = CommunicationSettingData.DEFAULT_FLOW_CONTROL;
+            _comPort = ComPortSettingDatas.DEFAULT_COM_PORT_NUM;
+            _baudrate = ComPortSettingDatas.DEFAULT_BAUDRATE;
+            _parity = ComPortSettingDatas.DEFAULT_PARITY;
+            _dataBit = ComPortSettingDatas.DEFAULT_DATA_BIT;
+            _stopBit = ComPortSettingDatas.DEFAULT_STOP_BIT;
+            _flowControl = ComPortSettingDatas.DEFAULT_FLOW_CONTROL;
+        }
+
+        /// <summary>
+        /// デフォルト現在位置確認周期設定
+        /// </summary>
+        public void SetDefaultReferPositionIntgerval()
+        {
+            _referPositionIntgerval = REFER_POSITION_INTERVAL;
         }
 
         /// <summary>
@@ -188,6 +236,16 @@ namespace DensoEvaluator
             _speedXLow = SPEED_SETTING_LOW;
             _speedYLow = SPEED_SETTING_LOW;
             _speedZLow = SPEED_SETTING_LOW;
+        }
+
+        /// <summary>
+        /// デフォルト移動幅/周期設定
+        /// </summary>
+        public void SetDefaultMoveStep()
+        {
+            _moveStepOneshot = MOVE_STEP_ONESHOT;
+            _moveStepCyclic = MOVE_STEP_CYCLIC;
+            _moveIntervalCyclic = MOVE_INTERVAL_CYCLIC;
         }
 
         /// <summary>
@@ -251,13 +309,19 @@ namespace DensoEvaluator
             FlowControl = appSettings._flowControl;
             // 移動位置設定
             PositionSettingCsvPath = appSettings._positionSettingCsvPath;
-            // デフォルト速度設定
+            // 現在位置確認周期設定
+            ReferPositionIntgerval = appSettings._referPositionIntgerval;
+            // 速度設定
             SpeedXHigh = appSettings._speedXHigh;
             SpeedYHigh = appSettings._speedYHigh;
             SpeedZHigh = appSettings._speedZHigh;
             SpeedXLow = appSettings._speedXLow;
             SpeedYLow = appSettings._speedYLow;
             SpeedZLow = appSettings._speedZLow;
+            // 移動幅/周期設定
+            MoveStepOneshot = appSettings._moveStepOneshot;
+            MoveStepCyclic = appSettings._moveStepCyclic;
+            MoveIntervalCyclic = appSettings._moveIntervalCyclic;
         }
     }
 }

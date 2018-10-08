@@ -9,13 +9,13 @@
 
     <Window.Resources>
         <!-- 通信設定コンボボックス制御用リソース -->
-        <local:ComPortSettingData x:Key="ComPortSetting" />
+        <local:ComPortNumSettingData x:Key="ComPortNumSetting" />
         <local:BaudrateSettingData x:Key="BaudrateSetting" />
         <local:ParitySettingData x:Key="ParitySetting" />
         <local:DataBitSettingData x:Key="DataBitSetting" />
         <local:StopBitSettingData x:Key="StopBitSetting" />
         <local:FlowControlSettingData x:Key="FlowControlSetting" />
-        <local:CommunicationSettingData x:Key="CommunicationSettings" />
+        <local:ComPortSettingDatas x:Key="ComPortSettings" />
 
         <!-- 整数入力エラー時にツールチップを表示するスタイル。
              TextBoxにエラーがあれば、ToolTipにエラー内容を表示し、背景色をピンクにすることを指定。 -->
@@ -52,7 +52,7 @@
                     <RowDefinition />
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Button x:Name="button_MoveFront" Content="Y(+)" Grid.Row="2" Grid.Column="1" Background="Transparent" BorderBrush="Transparent">
+                <Button x:Name="button_MoveFront" Content="Y(+)" Grid.Row="2" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" Click="button_MoveFront_Click" PreviewMouseLeftButtonDown="button_Move_MouseDown" PreviewMouseLeftButtonUp="button_Move_MouseUp">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Template">
@@ -73,7 +73,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="button_MoveRear"  Grid.Row="0" Grid.Column="1" Background="Transparent" BorderBrush="Transparent">
+                <Button x:Name="button_MoveRear"  Grid.Row="0" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" Click="button_MoveRear_Click" PreviewMouseLeftButtonDown="button_Move_MouseDown" PreviewMouseLeftButtonUp="button_Move_MouseUp">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Template">
@@ -94,7 +94,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="button_MoveLeft"  Grid.Row="1" Grid.Column="0" Background="Transparent" BorderBrush="Transparent">
+                <Button x:Name="button_MoveLeft"  Grid.Row="1" Grid.Column="0" Background="Transparent" BorderBrush="Transparent" Click="button_MoveLeft_Click" PreviewMouseLeftButtonDown="button_Move_MouseDown" PreviewMouseLeftButtonUp="button_Move_MouseUp">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Template">
@@ -115,7 +115,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="button_MoveRight" Grid.Row="1" Grid.Column="2" Background="Transparent" BorderBrush="Transparent">
+                <Button x:Name="button_MoveRight" Grid.Row="1" Grid.Column="2" Background="Transparent" BorderBrush="Transparent" Click="button_MoveRight_Click" PreviewMouseLeftButtonDown="button_Move_MouseDown" PreviewMouseLeftButtonUp="button_Move_MouseUp">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Template">
@@ -136,7 +136,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="button_MoveUp"    Grid.Row="0" Grid.Column="3" Background="Transparent" BorderBrush="Transparent">
+                <Button x:Name="button_MoveUp"    Grid.Row="0" Grid.Column="3" Background="Transparent" BorderBrush="Transparent" Click="button_MoveUp_Click" PreviewMouseLeftButtonDown="button_Move_MouseDown" PreviewMouseLeftButtonUp="button_Move_MouseUp">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Template">
@@ -157,7 +157,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="button_MoveDown"  Grid.Row="2" Grid.Column="3" Background="Transparent" BorderBrush="Transparent">
+                <Button x:Name="button_MoveDown"  Grid.Row="2" Grid.Column="3" Background="Transparent" BorderBrush="Transparent" Click="button_MoveDown_Click" PreviewMouseLeftButtonDown="button_Move_MouseDown" PreviewMouseLeftButtonUp="button_Move_MouseUp">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Template">
@@ -186,16 +186,16 @@
                 <Label Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalContentAlignment="Bottom">Z(+)</Label>
                 <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" >
-                        <Label   x:Name="label_FB" Content="X:" HorizontalAlignment="Right" />
-                        <TextBox x:Name="textBox_FB" Text="123456789" TextWrapping="Wrap" Width="72" HorizontalAlignment="Left" VerticalContentAlignment="Center" TextAlignment="Right"  Background="LightGray" IsReadOnly="true"/>
+                        <Label   x:Name="label_CurrentPosX" Content="X:" HorizontalAlignment="Right" />
+                        <TextBox x:Name="textBox_CurrentPosX" Text="123456789" TextWrapping="Wrap" Width="72" HorizontalAlignment="Left" VerticalContentAlignment="Center" TextAlignment="Right"  Background="LightGray" IsReadOnly="true"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" >
-                        <Label   x:Name="label_LR" Content="Y:" HorizontalAlignment="Right"/>
-                        <TextBox x:Name="textBox_LR" Text="123456789" TextWrapping="Wrap" Width="72" HorizontalAlignment="Left" VerticalContentAlignment="Center" TextAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                        <Label   x:Name="label_CurrentPosY" Content="Y:" HorizontalAlignment="Right"/>
+                        <TextBox x:Name="textBox_CurrentPosY" Text="123456789" TextWrapping="Wrap" Width="72" HorizontalAlignment="Left" VerticalContentAlignment="Center" TextAlignment="Right" Background="LightGray" IsReadOnly="true"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="2" >
-                        <Label   x:Name="label_UD" Content="Z:" HorizontalAlignment="Right"/>
-                        <TextBox x:Name="textBox_UD" Text="123456789" TextWrapping="Wrap" Width="72" HorizontalAlignment="Left" VerticalContentAlignment="Center" TextAlignment="Right" Background="LightGray" IsReadOnly="true"/>
+                        <Label   x:Name="label_CurrentPosZ" Content="Z:" HorizontalAlignment="Right"/>
+                        <TextBox x:Name="textBox_CurrentPosZ" Text="123456789" TextWrapping="Wrap" Width="72" HorizontalAlignment="Left" VerticalContentAlignment="Center" TextAlignment="Right" Background="LightGray" IsReadOnly="true"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>
@@ -205,24 +205,88 @@
             <GroupBox x:Name="groupBox_PresetPosition" Header="移動位置">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5">
-                        <Button x:Name="button_PersetPosition01" Content="00" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition02" Content="01" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition03" Content="02" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition04" Content="03" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition05" Content="04" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition06" Content="05" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition07" Content="06" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition08" Content="07" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition01" Content="00" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click" ToolTipOpening="button_PersetPosition_ToolTipOpening">
+                            <ToolTipService.ToolTip>
+                                <TextBlock Text="Pos[x,y,z]" Width="200" TextWrapping="Wrap"/>
+                            </ToolTipService.ToolTip>
+                        </Button>
+                        <Button x:Name="button_PersetPosition02" Content="01" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click" ToolTipOpening="button_PersetPosition_ToolTipOpening">
+                            <ToolTipService.ToolTip>
+                                <TextBlock Text="Pos[x,y,z]" Width="200" TextWrapping="Wrap"/>
+                            </ToolTipService.ToolTip>
+                        </Button>
+                        <Button x:Name="button_PersetPosition03" Content="02" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click" ToolTipOpening="button_PersetPosition_ToolTipOpening">
+                            <ToolTipService.ToolTip>
+                                <TextBlock Text="Pos[x,y,z]" Width="200" TextWrapping="Wrap"/>
+                            </ToolTipService.ToolTip>
+                        </Button>
+                        <Button x:Name="button_PersetPosition04" Content="03" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click" ToolTipOpening="button_PersetPosition_ToolTipOpening">
+                            <ToolTipService.ToolTip>
+                                <TextBlock Text="Pos[x,y,z]" Width="200" TextWrapping="Wrap"/>
+                            </ToolTipService.ToolTip>
+                        </Button>
+                        <Button x:Name="button_PersetPosition05" Content="04" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click" ToolTipOpening="button_PersetPosition_ToolTipOpening">
+                            <ToolTipService.ToolTip>
+                                <TextBlock Text="Pos[x,y,z]" Width="200" TextWrapping="Wrap"/>
+                            </ToolTipService.ToolTip>
+                        </Button>
+                        <Button x:Name="button_PersetPosition06" Content="05" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click" ToolTipOpening="button_PersetPosition_ToolTipOpening">
+                            <ToolTipService.ToolTip>
+                                <TextBlock Text="Pos[x,y,z]" Width="200" TextWrapping="Wrap"/>
+                            </ToolTipService.ToolTip>
+                        </Button>
+                        <Button x:Name="button_PersetPosition07" Content="06" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click" ToolTipOpening="button_PersetPosition_ToolTipOpening">
+                            <ToolTipService.ToolTip>
+                                <TextBlock Text="Pos[x,y,z]" Width="200" TextWrapping="Wrap"/>
+                            </ToolTipService.ToolTip>
+                        </Button>
+                        <Button x:Name="button_PersetPosition08" Content="07" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click" ToolTipOpening="button_PersetPosition_ToolTipOpening">
+                            <ToolTipService.ToolTip>
+                                <TextBlock Text="Pos[x,y,z]" Width="200" TextWrapping="Wrap"/>
+                            </ToolTipService.ToolTip>
+                        </Button>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="5">
-                        <Button x:Name="button_PersetPosition09" Content="08" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition10" Content="09" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition11" Content="10" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition12" Content="11" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition13" Content="12" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition14" Content="13" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition15" Content="14" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
-                        <Button x:Name="button_PersetPosition16" Content="15" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click"/>
+                        <Button x:Name="button_PersetPosition09" Content="08" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click" ToolTipOpening="button_PersetPosition_ToolTipOpening">
+                            <ToolTipService.ToolTip>
+                                <TextBlock Text="Pos[x,y,z]" Width="200" TextWrapping="Wrap"/>
+                            </ToolTipService.ToolTip>
+                        </Button>
+                        <Button x:Name="button_PersetPosition10" Content="09" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click" ToolTipOpening="button_PersetPosition_ToolTipOpening">
+                            <ToolTipService.ToolTip>
+                                <TextBlock Text="Pos[x,y,z]" Width="200" TextWrapping="Wrap"/>
+                            </ToolTipService.ToolTip>
+                        </Button>
+                        <Button x:Name="button_PersetPosition11" Content="10" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click" ToolTipOpening="button_PersetPosition_ToolTipOpening">
+                            <ToolTipService.ToolTip>
+                                <TextBlock Text="Pos[x,y,z]" Width="200" TextWrapping="Wrap"/>
+                            </ToolTipService.ToolTip>
+                        </Button>
+                        <Button x:Name="button_PersetPosition12" Content="11" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click" ToolTipOpening="button_PersetPosition_ToolTipOpening">
+                            <ToolTipService.ToolTip>
+                                <TextBlock Text="Pos[x,y,z]" Width="200" TextWrapping="Wrap"/>
+                            </ToolTipService.ToolTip>
+                        </Button>
+                        <Button x:Name="button_PersetPosition13" Content="12" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click" ToolTipOpening="button_PersetPosition_ToolTipOpening">
+                            <ToolTipService.ToolTip>
+                                <TextBlock Text="Pos[x,y,z]" Width="200" TextWrapping="Wrap"/>
+                            </ToolTipService.ToolTip>
+                        </Button>
+                        <Button x:Name="button_PersetPosition14" Content="13" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click" ToolTipOpening="button_PersetPosition_ToolTipOpening">
+                            <ToolTipService.ToolTip>
+                                <TextBlock Text="Pos[x,y,z]" Width="200" TextWrapping="Wrap"/>
+                            </ToolTipService.ToolTip>
+                        </Button>
+                        <Button x:Name="button_PersetPosition15" Content="14" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click" ToolTipOpening="button_PersetPosition_ToolTipOpening">
+                            <ToolTipService.ToolTip>
+                                <TextBlock Text="Pos[x,y,z]" Width="200" TextWrapping="Wrap"/>
+                            </ToolTipService.ToolTip>
+                        </Button>
+                        <Button x:Name="button_PersetPosition16" Content="15" Width="30" Height="30" Margin="2" HorizontalAlignment="Right" Background="LemonChiffon" Click="button_PersetPosition_Click" ToolTipOpening="button_PersetPosition_ToolTipOpening">
+                            <ToolTipService.ToolTip>
+                                <TextBlock Text="Pos[x,y,z]" Width="200" TextWrapping="Wrap"/>
+                            </ToolTipService.ToolTip>
+                        </Button>
                     </StackPanel>
                     <GroupBox x:Name="groupBox_LoadPosition" Header="位置ロード">
                         <DockPanel LastChildFill="True">
@@ -248,6 +312,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -258,29 +323,34 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Label Content="通信ポート:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right"/>
-                    <ComboBox x:Name="comboBox_ComPortSetting" HorizontalContentAlignment="Center" Grid.Row="0" Grid.Column="1" DataContext="{StaticResource ComPortSetting}"
-                              ItemsSource="{Binding ComPortEnumNameDictionary, Source={StaticResource CommunicationSettings}}" DisplayMemberPath="Value"
+                    <ComboBox x:Name="comboBox_ComPortSetting" HorizontalContentAlignment="Center" Grid.Row="0" Grid.Column="1" DataContext="{StaticResource ComPortNumSetting}"
+                              ItemsSource="{Binding ComPortNumEnumNameDictionary, Source={StaticResource ComPortSettings}}" DisplayMemberPath="Value"
                               SelectedValue="{Binding EnumValueComPort, Mode=TwoWay}" SelectedValuePath="Key" SelectedIndex="0"/>
+                    <!--                    
+                    <ComboBox x:Name="comboBox_ComPortSetting" HorizontalContentAlignment="Center" Grid.Row="0" Grid.Column="1"/>
+-->
+
                     <Label Content="ボーレート:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right"></Label>
                     <ComboBox x:Name="comboBox_BaudrateSetting" HorizontalContentAlignment="Center" Grid.Row="1" Grid.Column="1" DataContext="{StaticResource BaudrateSetting}"
-                              ItemsSource="{Binding BaudrateEnumNameDictionary, Source={StaticResource CommunicationSettings}}" DisplayMemberPath="Value"
+                              ItemsSource="{Binding BaudrateEnumNameDictionary, Source={StaticResource ComPortSettings}}" DisplayMemberPath="Value"
                               SelectedValue="{Binding EnumValueBaudrate, Mode=TwoWay}" SelectedValuePath="Key" SelectedIndex="8"/>
                     <Label Content="パリティ:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right"></Label>
                     <ComboBox x:Name="comboBox_ParitySetting" HorizontalContentAlignment="Center" Grid.Row="2" Grid.Column="1" DataContext="{StaticResource ParitySetting}"
-                              ItemsSource="{Binding ParityEnumNameDictionary, Source={StaticResource CommunicationSettings}}" DisplayMemberPath="Value"
+                              ItemsSource="{Binding ParityEnumNameDictionary, Source={StaticResource ComPortSettings}}" DisplayMemberPath="Value"
                               SelectedValue="{Binding EnumValueParity, Mode=TwoWay}" SelectedValuePath="Key"/>
                     <Label Content="データビット長:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right"></Label>
                     <ComboBox x:Name="comboBox_DataBitSetting" HorizontalContentAlignment="Center" Grid.Row="3" Grid.Column="1" DataContext="{StaticResource DataBitSetting}"
-                              ItemsSource="{Binding DataBitEnumNameDictionary, Source={StaticResource CommunicationSettings}}" DisplayMemberPath="Value"
+                              ItemsSource="{Binding DataBitEnumNameDictionary, Source={StaticResource ComPortSettings}}" DisplayMemberPath="Value"
                               SelectedValue="{Binding EnumValueDataBit, Mode=TwoWay}" SelectedValuePath="Key" SelectedIndex="1"/>
                     <Label Content="ストップビット:" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right"></Label>
                     <ComboBox x:Name="comboBox_StopBitSetting" HorizontalContentAlignment="Center" Grid.Row="4" Grid.Column="1" DataContext="{StaticResource StopBitSetting}"
-                              ItemsSource="{Binding StopBitEnumNameDictionary, Source={StaticResource CommunicationSettings}}" DisplayMemberPath="Value"
+                              ItemsSource="{Binding StopBitEnumNameDictionary, Source={StaticResource ComPortSettings}}" DisplayMemberPath="Value"
                               SelectedValue="{Binding EnumValueStopBit, Mode=TwoWay}" SelectedValuePath="Key"/>
                     <Label Content="フロー制御:" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right"></Label>
                     <ComboBox x:Name="comboBox_FlowControlSetting" HorizontalContentAlignment="Center" Grid.Row="5" Grid.Column="1" DataContext="{StaticResource FlowControlSetting}"
-                              ItemsSource="{Binding FlowControlEnumNameDictionary, Source={StaticResource CommunicationSettings}}" DisplayMemberPath="Value"
+                              ItemsSource="{Binding FlowControlEnumNameDictionary, Source={StaticResource ComPortSettings}}" DisplayMemberPath="Value"
                               SelectedValue="{Binding EnumValueFlowControl, Mode=TwoWay}" SelectedValuePath="Key"/>
+                    <Button x:Name="button_ComPortConnect" Content="接続" Grid.Row="5" Grid.Column="2" Margin="10,0,0,0" Click="button_ComPortConnect_Click"/>
                 </Grid>
             </GroupBox>
 

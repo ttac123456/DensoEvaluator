@@ -70,7 +70,9 @@
     </Compile>
     <Compile Include="AppSettings.cs" />
     <Compile Include="BindableBase.cs" />
-    <Compile Include="CommunicationSettingData.cs" />
+    <Compile Include="ComPortCommands.cs" />
+    <Compile Include="ComPortSettingDatas.cs" />
+    <Compile Include="ComPortController.cs" />
     <Compile Include="InputDataValidater.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
