@@ -2,7 +2,7 @@
 <AppSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <WindowPosX>0</WindowPosX>
   <WindowPosY>0</WindowPosY>
-  <ComPort>Com11</ComPort>
+  <ComPort>Com1</ComPort>
   <Baudrate>Baud_19200</Baudrate>
   <Parity>ParityNone</Parity>
   <DataBit>DataBit8</DataBit>
