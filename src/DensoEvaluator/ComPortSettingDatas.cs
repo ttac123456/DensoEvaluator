@@ -44,8 +44,8 @@ namespace DensoEvaluator
         private ComPortNumEnum _enumValueComPortNum;
         public ComPortNumEnum EnumValueComPortNum
         {
-            get => _enumValueComPortNum;
-            set => SetProperty(ref _enumValueComPortNum, value);
+            get { return _enumValueComPortNum; }
+            set { SetProperty(ref _enumValueComPortNum, value); }
         }                                               ///< 通信ポート番号設定値プロパティ
     }
 
@@ -80,8 +80,8 @@ namespace DensoEvaluator
         private BaudrateEnum _enumValueBaudrate;
         public BaudrateEnum EnumValueBaudrate
         {
-            get => _enumValueBaudrate;
-            set => SetProperty(ref _enumValueBaudrate, value);
+            get { return _enumValueBaudrate; }
+            set { SetProperty(ref _enumValueBaudrate, value); }
         }                                               ///< ボーレート設定値プロパティ
     }
 
@@ -106,8 +106,8 @@ namespace DensoEvaluator
         private ParityEnum _enumValueBParity;
         public ParityEnum EnumValueParity
         {
-            get => _enumValueBParity;
-            set => SetProperty(ref _enumValueBParity, value);
+            get { return _enumValueBParity; }
+            set { SetProperty(ref _enumValueBParity, value); }
         }                                               ///< パリティ設定値プロパティ
     }
 
@@ -131,8 +131,8 @@ namespace DensoEvaluator
         private DataBitEnum _enumValueDataBit;
         public DataBitEnum EnumValueDataBit
         {
-            get => _enumValueDataBit;
-            set => SetProperty(ref _enumValueDataBit, value);
+            get { return _enumValueDataBit; }
+            set { SetProperty(ref _enumValueDataBit, value); }
         }                                               ///< データビット長設定値プロパティ
     }
 
@@ -155,8 +155,8 @@ namespace DensoEvaluator
         private StopBitEnum _enumValueStopBit;
         public StopBitEnum EnumValueStopBit
         {
-            get => _enumValueStopBit;
-            set => SetProperty(ref _enumValueStopBit, value);
+            get { return _enumValueStopBit; }
+            set { SetProperty(ref _enumValueStopBit, value); }
         }                                               ///< ストップビット設定値プロパティ
     }
 
@@ -180,8 +180,8 @@ namespace DensoEvaluator
         private FlowControlEnum _enumValueFlowControl;
         public FlowControlEnum EnumValueFlowControl
         {
-            get => _enumValueFlowControl;
-            set => SetProperty(ref _enumValueFlowControl, value);
+            get { return _enumValueFlowControl; }
+            set { SetProperty(ref _enumValueFlowControl, value); }
         }                                               ///< フロー制御設定値プロパティ
     }
 
